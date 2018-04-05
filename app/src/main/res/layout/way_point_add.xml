@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/infowindow_bg"
+
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/point_name"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/black_60"
+        android:maxWidth="@dimen/size_200dp"
+        android:layout_marginLeft="@dimen/size_5dp"
+        android:layout_marginRight="@dimen/size_5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="@dimen/size_12sp"/>
+    <ImageView
+        android:layout_width="@dimen/size_30dp"
+        android:layout_height="@dimen/size_30dp"
+        android:id="@+id/point_add"
+        android:background="@drawable/green_right_corner_bg"
+        android:src="@mipmap/navi_point_add"/>
+
+</LinearLayout>

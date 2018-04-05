@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.administrator.learndemo.view.MyViewGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context="com.administrator.learndemo.view.ViewActivity">
+
+    <com.administrator.learndemo.view.TestView
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@color/corner_blue"
+        android:clickable="true"
+        android:padding="20dp"
+        app:circle_color="@color/red_highlight"
+        />
+
+    <Button
+        android:id="@+id/button_transition"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/view"
+        android:background="@drawable/transition_drawable"
+        />
+
+    <Button
+    android:id="@+id/button_inset"
+    android:layout_below="@+id/button_transition"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/inset_drawable"
+    />
+
+    <Button
+        android:id="@+id/button_anim"
+        android:layout_below="@+id/button_inset"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/inset_drawable"
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/button_object_anim"
+        android:layout_below="@+id/button_anim"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/inset_drawable"
+        android:onClick="buttonClick"
+        />
+</com.administrator.learndemo.view.MyViewGroup>

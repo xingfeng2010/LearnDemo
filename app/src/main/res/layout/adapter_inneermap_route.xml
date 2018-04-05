@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/innermap_route_bg">
+
+    <TextView
+        android:id="@+id/innermap_route_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="大路优先"
+        android:background="@drawable/inneermap_title"
+
+        android:textSize="14dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/innermap_route_id"
+
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/innermap_route_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="分钟"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+
+
+        <TextView
+            android:id="@+id/innermap_route_mile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/innermap_route_time"
+            android:layout_marginLeft="150dp"
+
+            android:layout_weight="1"
+            android:text="公里"
+
+            android:textSize="14dp" />
+        <TextView
+            android:id="@+id/innermap_route_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_below="@+id/innermap_route_time"
+            android:gravity="center"
+            android:layout_marginLeft="210dp"
+            android:text="红绿灯"
+            android:textSize="14dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="menu_map">#6a78ff</color>
+    <color name="menu_music">#ffac3b</color>
+    <color name="menu_wechat">#57de68</color>
+    <color name="menu_live">#fd5b6f</color>
+    <color name="menu_call">#31d0e5</color>
+    <color name="menu_setting">#5b95e3</color>
+
+
+    <color name="music_play_bg">#323748</color>
+
+    <color name="call_icon_bg">#2DD952</color>
+
+    <color name="select">#14aadc</color>
+    <color name="bottom_bg">#15131e</color>
+    <color name="bottom_select">#14aadc</color>
+    <color name="title_bg">#202026</color>
+    <color name="title_bg_press">#CC202026</color>
+    <color name="title_dividing_line">#5c5c60</color>
+    <color name="music_download">#808080</color>
+
+
+    <color name="search_view_bg">#313131</color>
+    <color name="showposition_bgcolor">#E6ffffff</color>
+    <color name="map_title_bg">#242429</color>
+    <color name="map_his_item_select">#14aadc</color>
+    <color name="map_his_item_default">#242429</color>
+    <color name="map_route_diviver_line">#30ffffff</color>
+    <color name="map_search_diviver_line">#666666</color>
+    <color name="off_map_group">#323232</color>
+    <color name="map_route_start_nac">#242429</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="cl_btn_b_tab_select">#0DBAED</color>
+    <color name="cl_press_b_tab_press">#ff003366</color>
+    <color name="cl_bg_c_main">#ff111217</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="color_call_default">#242429</color>
+    <color name="color_call_selected">#4870b2</color>
+    <color name="color_call_text">#c0c0c0</color>
+    <color name="blue_selected">#334a75</color>
+
+    <color name="setting_bg">#2a2a2a</color>
+
+    <color name="blue_ture">#0000FF</color>
+
+    <color name="common_bg">#000000</color>
+    <color name="numbtn">#00000000</color>
+    <color name="numbtn_unpress">#232936</color>
+    <color name="numbtn_press">#334a75</color>
+    <color name="lightgray">#b5b5b5</color>
+    <color name="darkgray">#404040</color>
+    <color name="tran_black">#E0000000</color>
+    <color name="tran_white">#C0ffffff</color>
+    <color name="half_white">#80ffffff</color>
+    <color name="list_line">#33ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#C0000000</color>
+    <color name="yellow">#fff100</color>
+    <color name="blue">#14aadc</color>
+    <color name="blue_press">#146496</color>
+    <color name="blue_unselect">#435691</color>
+    <color name="blue_select">#5b82f8</color>
+    <color name="bluevoice">#334a75</color>
+    <color name="dimgray">#696969</color>
+    <color name="navi_bg">#212025</color>
+    <color name="green">#54c69c</color>
+    <color name="green_press">#3b8b6e</color>
+    <color name="canclred">#db8463</color>
+    <color name="canclred_press">#9a5d45</color>
+    <color name="liveyellow">#e47a30</color>
+    <color name="setting_item_bg">#1f1f1f</color>
+    <color name="setting_bg_alpha">#f02a2a2a</color>
+
+    <color name="home_press_bg">#ff31497a</color>
+    <color name="color_transport">#00ffffff</color>
+
+    <color name="map_title_gray">#26272e</color>
+    <color name="map_title_separator">#1a000000</color>
+    <color name="map_pager_title_selected_color">#3ba1f8</color>
+
+    <color name="map_poi_result_list_bg_color">#F2FFFFFF</color>
+    <color name="map_poi_result_list_divider_color">#1A000000</color>
+    <color name="map_tab_head_bottom_color">#f3f6f9</color>
+    <color name="map_highlight_keyword_click">#dadbdc</color>
+    <color name="map_highlight_keyword_hover">#e4e6e8</color>
+
+    <color name="map_city_item">#404040</color>
+    <color name="nav_setting_grey">#262626</color>
+
+    <color name="map_setting_background">#eeeeee</color>
+    <color name="map_offline_title_select">#3ba1f8</color>
+
+    <color name="red_highlight">#ff5555</color>
+    <!--5%白色透明-->
+    <color name="transparent_5">#0Cffffff</color>
+    <!--8%白色透明-->
+    <color name="transparent_8">#14ffffff</color>
+    <!--10%白色透明-->
+    <color name="transparent_10">#19ffffff</color>
+    <!--20%白色透明-->
+    <color name="transparent_20">#33ffffff</color>
+    <!--30%白色透明-->
+    <color name="transparent_27">#45ffffff</color>
+    <!--30%白色透明-->
+    <color name="transparent_30">#4cffffff</color>
+    <!--50%白色透明-->
+    <color name="transparent_50">#7Fffffff</color>
+    <!--60%白色透明-->
+    <color name="transparent_60">#99ffffff</color>
+    <!--85%白色透明-->
+    <color name="transparent_85">#D8ffffff</color>
+    <!--21%黑色透明-->
+    <color name="transparent_black_21">#35000000</color>
+    <!--60%黑色透明-->
+    <color name="transparent_black_60">#99000000</color>
+    <!--30%黑色透明-->
+    <color name="transparent_black_30">#4c000000</color>
+    <color name="transparent_black_100">#00000000</color>
+
+    <!--5%白色透明-->
+    <color name="black_5">#0C000000</color>
+    <!--8%白色透明-->
+    <color name="black_8">#14000000</color>
+    <!--10%白色透明-->
+    <color name="black_10">#19000000</color>
+    <!--20%白色透明-->
+    <color name="black_20">#33000000</color>
+    <!--30%白色透明-->
+    <color name="black_27">#45000000</color>
+    <!--30%白色透明-->
+    <color name="black_30">#4c000000</color>
+    <!--50%白色透明-->
+    <color name="black_50">#7F000000</color>
+    <!--60%白色透明-->
+    <color name="black_60">#99000000</color>
+    <!--85%白色透明-->
+    <color name="black_85">#D8000000</color>
+    <!--主背景-->
+    <color name="background_main">#15131e</color>
+    <color name="background_title_layout_line">#4ce47a30</color>
+    <color name="green_color">#2db8a0</color>
+    <!--50%透明-->
+    <color name="green_color_50">#7F2db8a0</color>
+    <color name="dg_download_textcolor">#7d7d7d</color>
+    <color name="mic_back">#73646f</color>
+    <color name="call_line_color">#d8d8d8</color>
+    <color name="vehicle_num">#2db8a0</color>
+    <color name="mess_info">#e47a30</color>
+    <!--50%透明-->
+    <color name="mess_info_50">#7Fe47a30</color>
+    <color name="vehicle">#60ffffff</color>
+    <color name="half_vehicle">#30ffffff</color>
+    <color name="gridview_click">#10ffffff</color>
+    <color name="map_down_exception">#e47a30</color>
+    <color name="map_down_progress">#2db8a0</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="half_turn_color">#7F363636</color>
+    <color name="widget_tab">#111111</color>
+    <color name="widget_messge">#202020</color>
+
+
+    <color name="smooth_color">#00dc62</color>
+    <color name="slow_color">#efd035</color>
+    <color name="congested_color">#f03737</color>
+    <color name="serious_congested_color">#bf082f</color>
+
+    <color name="route_smooth_color">#90d777</color>
+    <color name="route_slow_color">#e5d05a</color>
+    <color name="route_congested_color">#e5866b</color>
+    <color name="route_serious_congested_color">#bb586b</color>
+
+    <color name="day_smooth_color">#90d777</color>
+    <color name="day_slow_color">#e5d05a</color>
+    <color name="day_congested_color">#e5866b</color>
+    <color name="day_serious_congested_color">#bb586b</color>
+
+
+    <color name="night_smooth_color">#6c9a42</color>
+    <color name="night_slow_color">#a79a47</color>
+    <color name="night_congested_color">#934d46</color>
+    <color name="night_serious_congested_color">#832942</color>
+    <color name="traffic_border">#e0e0e0</color>
+
+    <color name="q_color1">#738ffe</color>
+    <color name="q_color2">#ff4f81</color>
+    <color name="q_color3">#ffc107</color>
+    <color name="q_color4">#2ed29b</color>
+    <color name="q_color5">#ff6c5f</color>
+    <color name="q_color6">#4fc3f7</color>
+    <color name="q_color7">#738ffe</color>
+    <color name="q_color8">#f28750</color>
+    <color name="q_color9">#2ed39b</color>
+    <color name="q_color10">#ffec17</color>
+    <color name="q_color11">#ee534f</color>
+    <color name="q_color12">#4fc2f8</color>
+
+    <color name="navi_por_bottom">#15131E </color>
+    <color name="leader_line">#FF4141</color>
+
+    <!--setting-->
+    <color name="setting_ecolink_text">#FFFFFFFF</color>
+    <color name="setting_ecolink_type">#99FFFFFF</color>
+
+    <color name="setting_thincar_text">#FFFFFFFF</color>
+    <color name="setting_thincar_no">#99FFFFFF</color>
+    <color name="thincar_buy_background">#00000000</color>
+    <color name="thincar_link">#E47A30</color>
+
+    <color name="thincar_help">#99FFFFFF</color>
+
+    <color name="bpush_white">#80e2e2e2</color>
+    <color name="bpush_bg_gray">#e2e2e2</color>
+    <color name="gps_search_content">#EEEEEE</color>
+    <color name="rc__ntv_search_title">#1BC4EF</color>
+    <color name="gary">#898989</color>
+    <color name="parkinglarm_btn_blue">#3E6FF3</color>
+    <color name="innermap_nav_set_bg">#E1E3E9</color>
+    <color name="innermap_route_bg_unselected">#C5C5C9</color>
+    <color name="corner_blue">#32326F</color>
+    <color name="soft_black">#cc000000</color>
+</resources>

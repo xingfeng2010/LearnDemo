@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LearnDemo</string>
+
+    <string name="rc_innermap_my_location">我的位置</string>
+    <string name="poi_input_type_start">从</string>
+    <string name="poi_input_type_dest">到</string>
+    <string name="poi_input_type_mid">经</string>
+    <string name="navi_guide_from">出发</string>
+    <string name="navi_guide_end">到达终点</string>
+</resources>

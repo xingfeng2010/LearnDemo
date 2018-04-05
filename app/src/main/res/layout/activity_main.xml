@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mapdemo.administrator.learndemo.MainActivity">
+
+    <EditText
+        android:id="@+id/map_search_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:hint="请输入目的地"
+        android:textSize="20sp"/>
+
+    <com.amap.api.maps.TextureMapView
+        android:layout_below="@+id/map_search_text"
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ListView
+        android:layout_below="@+id/map_search_text"
+        android:id="@+id/search_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/transparent"
+        android:divider="@null"
+        android:scrollbarSize="2dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarThumbVertical="@color/transparent_30"
+        android:scrollbars="vertical"
+        android:visibility="visible"/>
+</RelativeLayout>
