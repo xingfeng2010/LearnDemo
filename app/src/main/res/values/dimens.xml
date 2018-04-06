@@ -219,11 +219,11 @@
     <dimen name="toast_margin_10">70dp</dimen>
 
     <dimen name="thincar_anim_height">175dp</dimen>
-    <dimen name="size_240dp" >240dp</dimen>
+    <dimen name="size_240dp">240dp</dimen>
     <dimen name="size_170dp">170dp</dimen>
     <dimen name="size_180dp">180dp</dimen>
     <dimen name="size_270dp">270dp</dimen>
-    <dimen name="size_480dp" >480dp</dimen>
+    <dimen name="size_480dp">480dp</dimen>
     <dimen name="size_580dp">580dp</dimen>
 
     <!--setting-->

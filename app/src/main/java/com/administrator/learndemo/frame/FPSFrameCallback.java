@@ -29,7 +29,7 @@ public class FPSFrameCallback implements Choreographer.FrameCallback {
             mLastFrameTimeNanos = frameTimeNanos;
         }
         final long jitterNanos = frameTimeNanos - mLastFrameTimeNanos;
-        Log.i(TAG, "frame cost time:" + jitterNanos / 1000000 + "ms");
+        //Log.i(TAG, "frame cost time:" + jitterNanos / 1000000 + "ms");
         if (jitterNanos >= mFrameIntervalNanos) {
             final long skippedFrames = jitterNanos / mFrameIntervalNanos;
             if (skippedFrames > 30) {
