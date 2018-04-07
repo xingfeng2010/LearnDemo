@@ -50,7 +50,7 @@ public class ImageRenderActivity extends AppCompatActivity {
         if (supportES2) {
             mGLSurfaceView.setEGLContextClientVersion(2);
 
-            mGLSurfaceView.setRenderer(new TextureRender(this));
+            mGLSurfaceView.setRenderer(new OrderTextureRender(this));
 
             bRenderSet = true;
         } else {

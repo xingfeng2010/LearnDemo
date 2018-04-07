@@ -5,12 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.view.animation.Transformation;
 
 import com.administrator.learndemo.R;
-import com.administrator.learndemo.opengl.util.LoggerConfig;
 import com.administrator.learndemo.opengl.util.ShaderHelper;
 import com.administrator.learndemo.opengl.util.TextResourceReader;
 import com.administrator.learndemo.opengl.util.TextureHelper;
@@ -18,6 +15,7 @@ import com.administrator.learndemo.opengl.util.TextureHelper;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -34,20 +32,29 @@ import static android.opengl.GLES20.glUniform1i;
  * Created by lishixing on 2018/4/5.
  */
 
-public class TextureRender implements GLSurfaceView.Renderer {
-    static float squareCoords[] = { //以三角形扇的形式绘制
-            //x   y
-            -1.0f, 1.0f,
-            -1.0f, -1.0f,
-            1.0f, 1.0f,
-            1.0f, -1.0f};  // bottom left
+public class OrderTextureRender implements GLSurfaceView.Renderer {
+    static float squareCoords[] = {
+            1, 1, 0,   // top right
+            -1, 1, 0,  // top left
+            -1, -1, 0, // bottom left
+            1, -1, 0,  // bottom right
+    };
 
-    static float textureCoords[] = { //以三角形扇的形式绘制
-            //s   t
-            0.0f, 0.0f, // top left
-            0.0f, 1.0f,// top right
-            1.0f, 0.0f,// bottom right
-            1.0f, 1.0f};  // bottom left
+    private static final short[] VERTEX_INDEX = { 0, 1, 2, 0, 2, 3 };
+
+//    static float textureCoords[] = {
+//            1.0f, 0,  // bottom right
+//            0,    0,  // bottom left
+//            0,    1.0f,  // top left
+//            1.0f, 1.0f,  // top right
+//    };
+
+    static float textureCoords[] = {
+            1.0f, 1.0f,  // bottom right
+            1.0f,    0,  // bottom left
+            0,    0.0f,  // top left
+            0.0f, 1.0f,  // top right
+    };
 
     float[] projectionMatrix = new float[16];
 
@@ -56,6 +63,7 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
     private FloatBuffer verxData;
     private FloatBuffer textureData;
+    private ShortBuffer vertextIndexData;
 
     private int mProgram;
 
@@ -69,24 +77,31 @@ public class TextureRender implements GLSurfaceView.Renderer {
     private int uColorLocation;
 
 
-    public TextureRender(Context context) {
+    public OrderTextureRender(Context context) {
         mContext = context;
         mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.fengj);
 
-        //resolveFlip();
+        resolveFlip();
+        //resolveCrop(0.2f,0.2f,0.6f,0.6f);
 
         ByteBuffer bb = ByteBuffer.allocateDirect(squareCoords.length * 4);
         bb.order(ByteOrder.nativeOrder());
         verxData = bb.asFloatBuffer();
         verxData.put(squareCoords);
 
-        ByteBuffer bb2 = ByteBuffer.allocateDirect(squareCoords.length * 4);
+        ByteBuffer bb2 = ByteBuffer.allocateDirect(textureCoords.length * 4);
         bb2.order(ByteOrder.nativeOrder());
         textureData = bb2.asFloatBuffer();
         textureData.put(textureCoords);
 
+        vertextIndexData = ByteBuffer.allocateDirect(VERTEX_INDEX.length * 2)
+                .order(ByteOrder.nativeOrder())
+                .asShortBuffer()
+                .put(VERTEX_INDEX);
+
         verxData.position(0);
         textureData.position(0);
+        vertextIndexData.position(0);
     }
 
     private void getProgram() {
@@ -126,7 +141,7 @@ public class TextureRender implements GLSurfaceView.Renderer {
         // telling it to read from texture unit 0.
         glUniform1i(uTextureUnitLocation, 0);
         //传入顶点坐标和纹理坐标
-        GLES20.glVertexAttribPointer(aPositionLocation, 2,
+        GLES20.glVertexAttribPointer(aPositionLocation, 3,
                 GLES20.GL_FLOAT, false, 0, verxData);
         GLES20.glEnableVertexAttribArray(aPositionLocation);
 //        //设置从第二个元素开始读取，因为从第二个元素开始才是纹理坐标
@@ -156,7 +171,8 @@ public class TextureRender implements GLSurfaceView.Renderer {
         //GLES20.glUniform4f(uColorLocation, 0.0f, 0.0f, 1.0f, 1.0f);
 
         GLES20.glUniformMatrix4fv(uMatrixLocation, 1, false, projectionMatrix, 0);
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
+        GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length,
+                GLES20.GL_UNSIGNED_SHORT, vertextIndexData);
     }
 
     private void resolveCrop(float x, float y, float width, float height) {
@@ -180,8 +196,28 @@ public class TextureRender implements GLSurfaceView.Renderer {
     }
 
     private void resolveFlip() {
-        swap(textureCoords, 1, 5);
-        swap(textureCoords, 3, 7);
+//        swap(textureCoords, 1, 5);
+//        swap(textureCoords, 3, 7);
+
+//        swap(textureCoords, 0, 2);
+//        swap(textureCoords, 4, 6);
+
+//        swap(textureCoords, 0, 2);
+//        swap(textureCoords, 4, 6);
+//
+//        swap(textureCoords, 1, 5);
+//        swap(textureCoords, 3, 7);
+
+//        float x = textureCoords[0];
+//        float y = textureCoords[1];
+//        textureCoords[0] = textureCoords[4];
+//        textureCoords[1] = textureCoords[5];
+//        textureCoords[4] = textureCoords[6];
+//        textureCoords[5] = textureCoords[7];
+//        textureCoords[6] = textureCoords[2];
+//        textureCoords[7] = textureCoords[3];
+//        textureCoords[2] = x;
+//        textureCoords[3] = y;
     }
 
     private void swap(float[] arr, int index1, int index2) {
