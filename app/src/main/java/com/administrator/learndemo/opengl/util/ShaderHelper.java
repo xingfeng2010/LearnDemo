@@ -49,7 +49,7 @@ public class ShaderHelper {
     /**
      * Compiles a shader, returning the OpenGL object ID.
      */
-    private static int compileShader(int type, String shaderCode) {
+    public static int compileShader(int type, String shaderCode) {
         
         // Create a new shader object.
         final int shaderObjectId = glCreateShader(type);
