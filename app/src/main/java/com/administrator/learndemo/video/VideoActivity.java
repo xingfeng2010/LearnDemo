@@ -6,6 +6,7 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
+import android.opengl.GLSurfaceView;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.SurfaceHolder;
 import android.view.TextureView;
 
 import com.administrator.learndemo.R;
+import com.administrator.learndemo.mp4.VideoRender;
 
 import java.io.IOException;
 
@@ -37,6 +39,10 @@ public class VideoActivity extends AppCompatActivity implements TextureView.Surf
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        GLSurfaceView surfaceView = new GLSurfaceView(this);
+//        surfaceView.setRenderer(new VideoRender(this));
+//        this.setContentView(surfaceView);
 
         setContentView(R.layout.activity_mp4);
 
