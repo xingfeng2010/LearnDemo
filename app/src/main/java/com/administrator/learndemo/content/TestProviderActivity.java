@@ -33,8 +33,8 @@ public class TestProviderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_provider);
-        
-        
+
+
         requestPermission();
     }
 
@@ -42,13 +42,12 @@ public class TestProviderActivity extends AppCompatActivity {
         //判断系统版本
         if (Build.VERSION.SDK_INT >= 23) {
             //检测当前app是否拥有某个权限
-            int checkCallPhonePermission = ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION);
+            int checkCallPhonePermission = this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
             //判断这个权限是否已经授权过
             if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
                 //判断是否需要 向用户解释，为什么要申请该权限
-                ActivityCompat.requestPermissions(this, PERMISSIONS_LOCATION, 1);
-                ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, 1 + 1);
+                this.requestPermissions(PERMISSIONS_LOCATION, 1);
+                this.requestPermissions(PERMISSIONS_STORAGE, 1 + 1);
             }
         }
     }
@@ -60,7 +59,7 @@ public class TestProviderActivity extends AppCompatActivity {
             OutputStream out = afd.createOutputStream();
             FileInputStream in = new FileInputStream(new File("/mnt/sdcard/h3c2.txt"));
 
-            Log.i(TestContentProvider.TAG,"size : " + in.available());
+            Log.i(TestContentProvider.TAG, "size : " + in.available());
 
             byte[] b = new byte[1024 * 5]; // 5KB
             int len;
@@ -71,7 +70,7 @@ public class TestProviderActivity extends AppCompatActivity {
 
             in.close();
             out.close();
-            Log.i(TestContentProvider.TAG,"file close normal");
+            Log.i(TestContentProvider.TAG, "file close normal");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

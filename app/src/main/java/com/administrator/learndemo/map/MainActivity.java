@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -49,7 +50,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements LocationSource, AMap.OnMapClickListener, AMap.OnCameraChangeListener, AMapLocationListener,GeocodeSearch.OnGeocodeSearchListener{
+public class MainActivity extends AppCompatActivity implements LocationSource, AMap.OnMapClickListener, AMap.OnCameraChangeListener, AMapLocationListener, GeocodeSearch.OnGeocodeSearchListener {
 
     private TextureMapView mapView;
     private AMap aMap;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
     private LatLonPoint mCenterPoint = null;
     private PoiSearch.Query mPoiQuery;// Poi查询条件类
     private PoiSearch mPoiSearch;// POI搜索
-    private List<SearchPoi> mPoiList=new ArrayList<>();
+    private List<SearchPoi> mPoiList = new ArrayList<>();
 
     private float currentZoom = 14;
 
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
             }
         });
 
-        mListView = (ListView)this.findViewById(R.id.search_list_view);
+        mListView = (ListView) this.findViewById(R.id.search_list_view);
         mListView.setVisibility(View.INVISIBLE);
         mSearchAdapter = new SearchAdapter(mPoiList, this);
         mListView.setAdapter(mSearchAdapter);
@@ -119,9 +120,11 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 
         startLocation();
 
-        int checkCallPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 10);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int checkCallPhonePermission = this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
+            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                this.requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 10);
+            }
         }
 
         setUpMap();
@@ -180,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         aMap.getUiSettings().setScaleControlsEnabled(true);
         aMap.getUiSettings().setZoomControlsEnabled(false);
 //          aMap.getUiSettings().setLogoBottomMargin(-1000);
-        MyTrafficStyle myTrafficStyle=new MyTrafficStyle();
+        MyTrafficStyle myTrafficStyle = new MyTrafficStyle();
         myTrafficStyle.setSmoothColor(getResources().getColor(R.color.smooth_color));
         myTrafficStyle.setCongestedColor(getResources().getColor(R.color.congested_color));
         myTrafficStyle.setSlowColor(getResources().getColor(R.color.slow_color));
@@ -190,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         aMap.setOnMapLoadedListener(new AMap.OnMapLoadedListener() {
             @Override
             public void onMapLoaded() {
-               // mNavi = AMapNavi.getInstance(MainActivity.this);
+                // mNavi = AMapNavi.getInstance(MainActivity.this);
                 aMap.setTrafficEnabled(true);
 
                 //setMapCustomStyleFile(MainActivity.this);
@@ -199,8 +202,8 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 
 
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
-         //设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
-         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+        //设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
+        aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
         MyLocationStyle myLocationStyle = new MyLocationStyle();
         myLocationStyle.radiusFillColor(getResources().getColor(R.color.transparent));
         myLocationStyle.strokeColor(getResources().getColor(R.color.transparent));
@@ -338,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 //            city = aMapLocation.getCity();
             mCityName = aMapLocation.getCity();
 
-            Log.i("lishixing", "setLocationOption mCityName:" + mCityName );
+            Log.i("lishixing", "setLocationOption mCityName:" + mCityName);
             mCenterPoint = new LatLonPoint(aMapLocation.getLatitude(), aMapLocation.getLongitude());
             mStartPoi = new SearchPoi(mCurLatitude + "", mCurLongitude + "", mCurAddress);
 
@@ -362,10 +365,10 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
     }
 
     private void setLocationOption() {
-        Log.i("lishixing", "setLocationOption 1111:" );
+        Log.i("lishixing", "setLocationOption 1111:");
         //setMap2SelectMaker();
-        currentZoom=14;
-        mapView.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mCurLatitude,mCurLongitude), currentZoom));
+        currentZoom = 14;
+        mapView.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mCurLatitude, mCurLongitude), currentZoom));
         markAddr = mCurAddress + "," + mCurMapLocation.getLatitude() + "," + mCurMapLocation.getLongitude();
 //        mGeoDescribe.setText(aMapLocation.getAddress());
 //        mGeoBuildings.setText("我的位置");
@@ -374,17 +377,17 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
     }
 
     private void setMap2SelectMaker() {
-        if (mChosePointMarker!=null){
+        if (mChosePointMarker != null) {
             mChosePointMarker.destroy();
         }
 
-        if (mCurPointMarker==null){
+        if (mCurPointMarker == null) {
             mCurPointMarker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.navi))
-                    .position(new LatLng(mCurMapLocation.getLatitude(),mCurMapLocation.getLongitude())));
-        }else{
+                    .position(new LatLng(mCurMapLocation.getLatitude(), mCurMapLocation.getLongitude())));
+        } else {
             mCurPointMarker.setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.navi));
-            mCurPointMarker.setPosition(new LatLng(mCurMapLocation.getLatitude(),mCurMapLocation.getLongitude()));
+            mCurPointMarker.setPosition(new LatLng(mCurMapLocation.getLatitude(), mCurMapLocation.getLongitude()));
             mCurPointMarker.setRotateAngle(0);
 
         }
@@ -392,72 +395,74 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 
     private void showSoftInput(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
+        imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
 
-    private void doPoiSearch(String newText){
+    private void doPoiSearch(String newText) {
         if (newText.length() > 0) {
-            if (mCityName==null||mCenterPoint==null){
+            if (mCityName == null || mCenterPoint == null) {
                 return;
             }
             mListView.setVisibility(View.VISIBLE);
-            SearchPoi searchPoi=new SearchPoi("0","0",newText);
+            SearchPoi searchPoi = new SearchPoi("0", "0", newText);
             searchPoi.setType(SearchPoi.SEARCH);
             if (mCenterPoint != null) {
                 mPoiQuery = new PoiSearch.Query(newText, "", mCityName);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
                 mPoiQuery.setPageSize(20);
                 mPoiQuery.setCityLimit(false);
                 mPoiSearch = new PoiSearch(MainActivity.this, mPoiQuery);
-                mPoiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() { /*** 附近的加油站/银行搜索*/
-                @Override
-                public void onPoiSearched(PoiResult result, int rCode) {
+                mPoiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+                    /*** 附近的加油站/银行搜索*/
+                    @Override
+                    public void onPoiSearched(PoiResult result, int rCode) {
 //                    search_progress.setVisibility(View.INVISIBLE);
 //                    img_delete.setVisibility(View.VISIBLE);
 //                    isNearBy = false;
 
-                    if (rCode == 1000) {
-                        if (result != null && result.getQuery() != null) {// 搜索poi的结果
-                            // 取得搜索到的poiitems有多少页
-                            List<PoiItem> poiItems = result.getPois();// 取得第一页的poiitem数据，页数从数字0开始
-                            if (poiItems != null && poiItems.size() > 0) {
-                                SearchPoi searchPoi;
-                                mPoiList.clear();
-                                for (int i = 0; i < poiItems.size(); i++) {
-                                    PoiItem poiItem=poiItems.get(i);
-                                    searchPoi = new SearchPoi();
-                                    searchPoi.setAddrname(poiItem.getTitle());
-                                    searchPoi.setDistrict(poiItem.getDirection());
-                                    searchPoi.setLatitude(poiItem.getLatLonPoint() .getLatitude()+ "");
-                                    searchPoi.setLongitude(poiItem.getLatLonPoint().getLongitude() + "");
-                                    searchPoi.setDistrict(poiItem.getSnippet());
-                                    searchPoi.setDistance(poiItem.getDistance());
-                                    mPoiList.add(searchPoi);
+                        if (rCode == 1000) {
+                            if (result != null && result.getQuery() != null) {// 搜索poi的结果
+                                // 取得搜索到的poiitems有多少页
+                                List<PoiItem> poiItems = result.getPois();// 取得第一页的poiitem数据，页数从数字0开始
+                                if (poiItems != null && poiItems.size() > 0) {
+                                    SearchPoi searchPoi;
+                                    mPoiList.clear();
+                                    for (int i = 0; i < poiItems.size(); i++) {
+                                        PoiItem poiItem = poiItems.get(i);
+                                        searchPoi = new SearchPoi();
+                                        searchPoi.setAddrname(poiItem.getTitle());
+                                        searchPoi.setDistrict(poiItem.getDirection());
+                                        searchPoi.setLatitude(poiItem.getLatLonPoint().getLatitude() + "");
+                                        searchPoi.setLongitude(poiItem.getLatLonPoint().getLongitude() + "");
+                                        searchPoi.setDistrict(poiItem.getSnippet());
+                                        searchPoi.setDistance(poiItem.getDistance());
+                                        mPoiList.add(searchPoi);
 
+                                    }
+                                    mSearchAdapter.notifyDataSetChanged();
+                                } else {
+                                    mPoiList.clear();
+                                    mSearchAdapter.notifyDataSetChanged();
                                 }
-                                mSearchAdapter.notifyDataSetChanged();
-                            } else {
-                                mPoiList.clear();
-                                mSearchAdapter.notifyDataSetChanged();
                             }
                         }
-                    }
 
-                }
+                    }
 
                     @Override
                     public void onPoiItemSearched(PoiItem poiItem, int i) {
                         String address = poiItem.getSnippet();
                     }
                 });
-                if (isNearBy){
-                    mPoiSearch.setBound(new PoiSearch.SearchBound(mCenterPoint, 3000, true));}
+                if (isNearBy) {
+                    mPoiSearch.setBound(new PoiSearch.SearchBound(mCenterPoint, 3000, true));
+                }
                 // 设置搜索区域为以lp点为圆心，其周围2000米范围
                 mPoiSearch.searchPOIAsyn();// 异步搜索
             }
         }
     }
 
-    private void startNavi(SearchPoi searchPoi){
+    private void startNavi(SearchPoi searchPoi) {
         Intent intent = new Intent(MainActivity.this, NewRoutePlanActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(RoutePlanActivity.KEY_POI_END, searchPoi);

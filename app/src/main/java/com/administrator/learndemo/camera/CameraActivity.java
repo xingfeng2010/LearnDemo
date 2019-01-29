@@ -20,7 +20,7 @@ public class CameraActivity extends AppCompatActivity {
         @Override
         public void run() {
             setContentView(R.layout.activity_camera2);
-            mSurface = (MyGLSurfaceView)findViewById(R.id.surface);
+            mSurface = (MyGLSurfaceView) findViewById(R.id.surface);
         }
     };
 
@@ -28,13 +28,13 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
-            if (PackageManager.PERMISSION_GRANTED == ActivityCompat.
-                    checkSelfPermission(this, Manifest.permission.CAMERA)) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (PackageManager.PERMISSION_GRANTED == this.
+                    checkSelfPermission(Manifest.permission.CAMERA)) {
                 initView.run();
             } else {
-                ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10);
+                this.requestPermissions(new String[]{Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10);
             }
         } else {
             initView.run();

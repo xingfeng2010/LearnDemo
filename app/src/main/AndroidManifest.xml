@@ -23,6 +23,10 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+
     <application
         android:name=".LearnApplication"
         android:allowBackup="true"
@@ -104,7 +108,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
         <activity android:name=".mp4.Mp4Activity">
@@ -112,6 +116,27 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+        <activity android:name=".share.ShareActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            </intent-filter>
+        </activity>
+        <activity android:name=".qrcode.QRCodeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                 <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            </intent-filter>
+        </activity>
+        <activity android:name=".zhiwen.ZhiWenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
     </application>

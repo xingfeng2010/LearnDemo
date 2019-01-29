@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -41,12 +42,17 @@ public class MediaActivity extends AppCompatActivity {
 
         initView();
 
-        int checkCallPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 10);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int checkCallPhonePermission = this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 10);
+            } else {
+                queryLocalMedia();
+            }
         } else {
             queryLocalMedia();
         }
+
     }
 
     private void initView() {
