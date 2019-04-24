@@ -1,26 +1,42 @@
 package com.xingfeng.FingerPrintLib;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.CancellationSignal;
+import android.security.KeyPairGeneratorSpec;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Base64;
+import android.util.Log;
 
+import com.xingfeng.FingerPrintLib.utils.SecurityConstants;
 import com.xingfeng.fingerprintlib.R;
 
+import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import javax.security.auth.x500.X500Principal;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by gaoyang on 2018/06/19.
@@ -37,6 +53,8 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
     private Signature mSignature;
     private String mToBeSignedMessage;
 
+    private String mSignStr;
+
     @RequiresApi(Build.VERSION_CODES.P)
     public BiometricPromptApi28(Activity activity) {
         mActivity = activity;
@@ -47,14 +65,14 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
                 .setSubtitle("")
                 .setNegativeButton(activity.getResources().getString(R.string.biometric_dialog_use_password),
                         activity.getMainExecutor(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (mManagerIdentifyCallback != null) {
-                            mManagerIdentifyCallback.onUsePassword();
-                        }
-                        mCancellationSignal.cancel();
-                    }
-                })
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (mManagerIdentifyCallback != null) {
+                                    mManagerIdentifyCallback.onUsePassword();
+                                }
+                                mCancellationSignal.cancel();
+                            }
+                        })
                 .build();
 
 
@@ -115,6 +133,10 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
             super.onAuthenticationSucceeded(result);
             mManagerIdentifyCallback.onSucceeded();
             mCancellationSignal.cancel();
+
+            verfiySign(result, mToBeSignedMessage, mSignStr);
+            Log.i("onAuthentication", " getSignature:" + result.getCryptoObject().getSignature());
+            Log.i("onAuthentication", " getCipher:" + result.getCryptoObject().getCipher());
         }
 
         @Override
@@ -125,6 +147,7 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
 
     /**
      * Generate NIST P-256 EC Key pair for signing and verification
+     *
      * @param keyName
      * @param invalidatedByBiometricEnrollment
      * @return
@@ -140,8 +163,8 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
                         KeyProperties.DIGEST_SHA384,
                         KeyProperties.DIGEST_SHA512)
                 // Require the user to authenticate with a biometric to authorize every use of the key
-                .setUserAuthenticationRequired(true)
-                .setInvalidatedByBiometricEnrollment(invalidatedByBiometricEnrollment);
+                .setUserAuthenticationRequired(true);
+              //  .setInvalidatedByBiometricEnrollment(invalidatedByBiometricEnrollment);
 
         keyPairGenerator.initialize(builder.build());
 
@@ -164,15 +187,60 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
     }
 
     @Nullable
-    private Signature initSignature (String keyName) throws Exception {
+    private Signature initSignature(String keyName) throws Exception {
         KeyPair keyPair = getKeyPair(keyName);
 
         if (keyPair != null) {
             Signature signature = Signature.getInstance("SHA256withECDSA");
             signature.initSign(keyPair.getPrivate());
+
+//            signature.update(mToBeSignedMessage.getBytes());
+//            byte[] signData = signature.sign();
+//            mSignStr = Base64.encodeToString(signData, Base64.DEFAULT);
             return signature;
         }
         return null;
     }
 
+    private boolean verfiySign(BiometricPrompt.AuthenticationResult result, String input, String signatureStr) {
+        try {
+            Signature s = result.getCryptoObject().getSignature();
+            byte[] data = input.getBytes();
+            s.update(data);
+            byte[] signData= s.sign();
+
+            KeyStore ks = KeyStore.getInstance(SecurityConstants.KEYSTORE_PROVIDER_ANDROID_KEYSTORE);
+            ks.load(null);
+            KeyStore.Entry entry = ks.getEntry(KEY_NAME, null);
+
+            if (entry == null) {
+                Log.w(TAG, "No key found under alias: " + KEY_NAME);
+                Log.w(TAG, "Exiting signData()...");
+                return false;
+            }
+
+            if (!(entry instanceof KeyStore.PrivateKeyEntry)) {
+                Log.w(TAG, "Not an instance of a PrivateKeyEntry");
+                Log.w(TAG, "Exiting signData()...");
+                return false;
+            }
+
+            KeyStore.PrivateKeyEntry actualEntry = (KeyStore.PrivateKeyEntry) entry;
+            PublicKey publicKey = actualEntry.getCertificate().getPublicKey();
+
+//            KeyFactory factory = KeyFactory.getInstance(publicKey.getAlgorithm());
+//            X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKey.getEncoded());
+//            PublicKey verificationKey = factory.generatePublic(spec);
+
+            s.initVerify(actualEntry.getCertificate());
+            s.update(data);
+
+           Log.i("VerifyResult", "" + s.verify(signData));
+            return false;
+        } catch (Exception e) {
+            Log.i("VerifyResult", "Exception e:" + e);
+        }
+
+        return false;
+    }
 }

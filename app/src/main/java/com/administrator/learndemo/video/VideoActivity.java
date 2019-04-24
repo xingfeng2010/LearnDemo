@@ -27,7 +27,8 @@ public class VideoActivity extends AppCompatActivity implements TextureView.Surf
 //    public String videoPath = Environment.getExternalStorageDirectory().getPath()
 //            + "/DCIM/Camera/VID_20180520_161800.mp4";
 
-    public String videoPath = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    //public String videoPath = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    public String videoPath = "http://incallcdn.changan.com.cn/static/cdnshamdown/preprod/246f669528043c052e562693f2dfcde88525f99d04be5ada61cb08299e25e26cad3247a7ca0694488ff55320421a45e3/QUxNXzIwMTkwMjE5XzE0NDQxM19NXzAwMTU1Lm1wNA==";
 
     private TextureView textureView;
     private MediaPlayer mediaPlayer;

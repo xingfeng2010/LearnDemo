@@ -28,7 +28,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public class KeyStoreActivity extends AppCompatActivity {
-    String TAG = "MainActivity";
+    public static final String TAG = "MainActivity";
     private TextView textShow;
     private Button encrypt;
     private Button decrypt;
