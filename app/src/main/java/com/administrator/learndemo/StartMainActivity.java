@@ -23,6 +23,8 @@ import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
 import com.administrator.learndemo.video.VideoActivity;
 import com.administrator.learndemo.view.ViewActivity;
+import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
+import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -43,7 +45,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ZhiWenActivity.class,
             KeyStoreActivity.class,
             DaoCheActivity.class,
-            ImageCompressActivity.class
+            ImageCompressActivity.class,
+            ViewPagerActivity.class,
+            ViewPagerFragmentActivity.class
     };
 
 
@@ -82,7 +86,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "指纹",
                 "KeyStore",
                 "DaoCheView",
-                "图片压缩"
+                "图片压缩",
+                "ViewPager+Fragment",
+                "ViewPagerFragment"
         };
 
         @Override

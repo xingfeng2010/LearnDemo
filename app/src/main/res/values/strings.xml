@@ -7,4 +7,15 @@
     <string name="poi_input_type_mid">经</string>
     <string name="navi_guide_from">出发</string>
     <string name="navi_guide_end">到达终点</string>
+
+    <string name="first_fragment">Fragment 1</string>
+    <string name="second_fragment">Fragment 2</string>
+    <string name="static_fragment">Static fragment</string>
+    <string name="to_second_fragment">Change to second fragment</string>
+    <string name="to_static_fragment">Change to static fragment</string>
+
+    <string name="viewpager_fragment_tab_app_text">应用</string>
+    <string name="viewpager_fragment_tab_home_text">主页</string>
+    <string name="viewpager_fragment_tab_user_text">用户</string>
+    <string name="viewpager_fragment_tab_secondlayer_text">双层</string>
 </resources>

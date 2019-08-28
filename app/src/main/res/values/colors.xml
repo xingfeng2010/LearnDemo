@@ -229,4 +229,10 @@
     <color name="innermap_route_bg_unselected">#C5C5C9</color>
     <color name="corner_blue">#32326F</color>
     <color name="soft_black">#cc000000</color>
+
+    <color name="background_default">#EEEEEE</color>
+    <color name="viewpager_fragment_tab_normal">#AAAAAA</color>
+    <color name="viewpager_fragment_tab_current">#A0FF0000</color>
+    <color name="viewpager_fragment_click_btn_normal">#A08080FF</color>
+    <color name="viewpager_fragment_click_btn_pressed">#FF8080FF</color>
 </resources>

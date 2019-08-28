@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+	<TextView
+	    android:id="@+id/viewpager_fragment_tab_app"
+	    android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:padding="5dp"
+	    android:clickable="true"
+	    android:background="@drawable/selector_viewpager_fragment_tab"
+	    android:gravity="center_horizontal"
+	    android:textColor="@color/viewpager_fragment_tab_normal"
+	    android:text="@string/viewpager_fragment_tab_app_text"
+	    android:drawableTop="@drawable/viewpager_fragment_tab_app" />
+	<TextView
+	    android:id="@+id/viewpager_fragment_tab_home"
+	    android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:padding="5dp"
+	    android:clickable="true"
+	    android:background="@drawable/selector_viewpager_fragment_tab"
+	    android:gravity="center_horizontal"
+	    android:textColor="@color/viewpager_fragment_tab_current"
+	    android:text="@string/viewpager_fragment_tab_home_text"
+	    android:drawableTop="@drawable/viewpager_fragment_tab_home" />
+	<TextView
+	    android:id="@+id/viewpager_fragment_tab_user"
+	    android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:padding="5dp"
+	    android:clickable="true"
+	    android:background="@drawable/selector_viewpager_fragment_tab"
+	    android:gravity="center_horizontal"
+	    android:textColor="@color/viewpager_fragment_tab_normal"
+	    android:text="@string/viewpager_fragment_tab_user_text"
+	    android:drawableTop="@drawable/viewpager_fragment_tab_user" />
+
+</LinearLayout>
