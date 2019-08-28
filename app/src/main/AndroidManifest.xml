@@ -2,31 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.administrator.learndemo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-     
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <!-- 调用硬件相机权限 -->
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <!-- 指纹识别权限 -->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-
     <application
         android:name=".LearnApplication"
         android:allowBackup="true"
@@ -35,9 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="85b5ac31cd8d172ad3ea10064c78c8ea" />
+        <activity android:name=".viewpage.ViewPagerActivity"></activity>
 
         <activity android:name=".map.MainActivity">
             <intent-filter>
@@ -47,9 +20,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.amap.api.location.APSService" />
-
         <activity android:name=".map.NewRoutePlanActivity" />
+
         <activity android:name=".VelocityTracker.VelocityTrackerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +29,7 @@
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
+
         <activity android:name=".mediaplayer.MediaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,11 +51,6 @@
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-
-        <provider
-            android:name=".content.TestContentProvider"
-            android:authorities="com.test.provider" />
-
         <activity android:name=".content.TestProviderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -97,6 +65,7 @@
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
+
         <activity android:name=".camera.CameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -104,6 +73,7 @@
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
+
         <activity android:name=".video.VideoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -150,16 +120,50 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
         <activity android:name=".ImageCompressActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity android:name=".StartMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="85b5ac31cd8d172ad3ea10064c78c8ea" />
+        <provider
+            android:name=".content.TestContentProvider"
+            android:authorities="com.test.provider" />
+        <service android:name="com.amap.api.location.APSService" />
     </application>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 调用硬件相机权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
 </manifest>

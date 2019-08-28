@@ -16,6 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import static java.lang.Math.floor;
+import static java.lang.Math.random;
+
 public class ImageCompressActivity extends AppCompatActivity {
 
     private ImageView mImageView;
@@ -54,4 +57,38 @@ public class ImageCompressActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
         mImageView.setImageBitmap(bitmap);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        int newOrder[] = upsetOrder(numsArr);
+        for (int i = 0; i < newOrder.length; i++) {
+           // Log.i("TEST_BITMAP", "newOrder:" + newOrder[i]);
+        }
+    }
+
+
+    int[] numsArr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+    public int[] upsetOrder(int[] arr) {
+        int len = arr.length;
+
+        int i, j, temp, n = (int)floor(len / 2) + 1;
+
+        while (n-- > 0) {
+            double ran1 = random();
+            double ran2 = random();
+            Log.i("TEST_BITMAP", "ran1:" + ran1);
+            Log.i("TEST_BITMAP", "ran2:" + ran2);
+            i = (int)floor(ran1 * len);
+            j = (int)floor(ran2 * len);
+            if (i != j) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        return arr;
+    }
+
 }
