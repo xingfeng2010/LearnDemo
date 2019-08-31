@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
+import com.administrator.learndemo.algorithm.AlgorithmActivity;
+import com.administrator.learndemo.algorithm.BroadcaseCoverActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
@@ -47,7 +49,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             DaoCheActivity.class,
             ImageCompressActivity.class,
             ViewPagerActivity.class,
-            ViewPagerFragmentActivity.class
+            ViewPagerFragmentActivity.class,
+            AlgorithmActivity.class,
+            BroadcaseCoverActivity.class
     };
 
 
@@ -88,7 +92,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "DaoCheView",
                 "图片压缩",
                 "ViewPager+Fragment",
-                "ViewPagerFragment"
+                "ViewPagerFragment",
+                "算法",
+                "广播集合覆盖问题"
         };
 
         @Override
