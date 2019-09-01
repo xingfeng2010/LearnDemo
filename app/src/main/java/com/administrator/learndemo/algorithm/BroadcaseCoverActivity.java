@@ -33,26 +33,11 @@ import java.util.ListIterator;
  在本例中贪婪算法是个不错的选择，不仅运行速度快，本例运行时间O(n²),最坏的情况，假设n个广播台，每个广播台就覆盖1个地区,n个地区，总计需要查询n*n=O(n²)
  */
 
-public class BroadcaseCoverActivity extends AppCompatActivity {
-
-    private TextView mTextView;
+public class BroadcaseCoverActivity extends BaseAlgorithmActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_broadcase_cover);
-
-        mTextView = (TextView) this.findViewById(R.id.text_view);
-
-
-        new Thread() {
-
-            @Override
-            public void run() {
-                startcomptuer();
-            }
-
-        }.start();
+    protected void startCompile() {
+        startcomptuer();
     }
 
     private void startcomptuer() {
@@ -107,21 +92,11 @@ public class BroadcaseCoverActivity extends AppCompatActivity {
 //            Log.i("DEBUG_TEST","s集合的剩余 broadcasts is:" + broadcasts);
         }
 
-        final StringBuilder sb = new StringBuilder();
         sb.append("当前找到的最优解为：\n");
 
         Iterator iterator =  selects.iterator();
         while (iterator.hasNext()) {
             sb.append(iterator.next() + "\t");
         }
-
-
-        mTextView.post(new Runnable() {
-            @Override
-            public void run() {
-                mTextView.setText(sb.toString());
-            }
-        });
-
     }
 }

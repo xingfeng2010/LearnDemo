@@ -1,4 +1,4 @@
-package com.administrator.learndemo;
+package com.administrator.learndemo.algorithm;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.administrator.learndemo.DaoCheActivity;
+import com.administrator.learndemo.ImageCompressActivity;
+import com.administrator.learndemo.R;
 import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
-import com.administrator.learndemo.algorithm.AlgorithmActivity;
-import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
-import com.administrator.learndemo.algorithm.BroadcaseCoverActivity;
-import com.administrator.learndemo.algorithm.DynaicPlanActivity;
-import com.administrator.learndemo.algorithm.WideFirstActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
@@ -32,28 +30,14 @@ import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
-public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class AlgorithmMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
     private LayoutInflater mLayoutInflator;
     private Class[] classes = new Class[]{
-            MainActivity.class,
-            NewRoutePlanActivity.class,
-            VelocityTrackerActivity.class,
-            MediaActivity.class,
-            ViewActivity.class,
-            OpenGLActivity.class,
-            TestProviderActivity.class,
-            ImageRenderActivity.class,
-            CameraActivity.class,
-            VideoActivity.class,
-            Mp4Activity.class,
-            ZhiWenActivity.class,
-            KeyStoreActivity.class,
-            DaoCheActivity.class,
-            ImageCompressActivity.class,
-            ViewPagerActivity.class,
-            ViewPagerFragmentActivity.class,
-            AlgorithmMainActivity.class
+            AlgorithmActivity.class,
+            BroadcaseCoverActivity.class,
+            WideFirstActivity.class,
+            DynaicPlanActivity.class
     };
 
 
@@ -72,30 +56,16 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(StartMainActivity.this, classes[i]);
-        StartMainActivity.this.startActivity(intent);
+        Intent intent = new Intent(AlgorithmMainActivity.this, classes[i]);
+        AlgorithmMainActivity.this.startActivity(intent);
     }
 
     private class MyBaseAdapter extends BaseAdapter {
         private String[] classDescription = new String[]{
-                "地图定位",
-                "路径规划",
-                "VelocityTracker",
-                "MediaPlayer",
-                "View和自定义动画",
-                "OpenGL和GLSurfaceView",
-                "TestProvider",
-                "ImageRender",
-                "Camera和GLSurfaceView",
-                "TextureView",
-                "Mp4 EGL",
-                "指纹",
-                "KeyStore",
-                "DaoCheView",
-                "图片压缩",
-                "ViewPager+Fragment",
-                "ViewPagerFragment",
-                "算法"
+                "0/1背包贪心算法",
+                "广播集合覆盖问题",
+                "广度优先搜素算法",
+                "动态规划商品问题"
         };
 
         @Override

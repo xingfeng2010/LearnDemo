@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.administrator.learndemo.R;
 
-public class AlgorithmActivity extends AppCompatActivity {
+public class AlgorithmActivity extends BaseAlgorithmActivity {
 
 
     // 单位重量价值分别为:10 5 7 6 3 8 90 100
@@ -20,19 +20,13 @@ public class AlgorithmActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_algorithm);
-
-        mTextView = (TextView) this.findViewById(R.id.text_view);
-
+    protected void startCompile() {
         int n = w.length;// 物体的个数
 
         double[] x = new double[n];// 每个物体装进的比例,大于等于0并且小于等于1
 
         AlgorithmUtil.function(w, v, M, n, x);//调用贪心算法函数
 
-        StringBuilder sb = new StringBuilder();
         sb.append("排序后的物体的重量:\n");
         for(int i=0;i<n;i++){
             sb.append(w[i]+"\t");
@@ -58,7 +52,5 @@ public class AlgorithmActivity extends AppCompatActivity {
         sb.append("装\n");
         sb.append("最大价值为:\n");
         sb.append(maxValue);
-
-        mTextView.setText(sb.toString());
     }
 }

@@ -165,7 +165,10 @@
         <activity android:name=".viewpage.change.ViewPagerActivity" />
         <activity android:name=".viewpage.tab.ViewPagerFragmentActivity" />
         <activity android:name=".algorithm.AlgorithmActivity" />
-        <activity android:name=".algorithm.BroadcaseCoverActivity"></activity>
+        <activity android:name=".algorithm.BroadcaseCoverActivity" />
+        <activity android:name=".algorithm.WideFirstActivity" />
+        <activity android:name=".algorithm.DynaicPlanActivity"></activity>
+        <activity android:name=".algorithm.AlgorithmMainActivity"></activity>
     </application>
 
 </manifest>
