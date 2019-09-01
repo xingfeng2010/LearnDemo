@@ -37,7 +37,9 @@ public class AlgorithmMainActivity extends AppCompatActivity implements AdapterV
             AlgorithmActivity.class,
             BroadcaseCoverActivity.class,
             WideFirstActivity.class,
-            DynaicPlanActivity.class
+            DynaicPlanActivity.class,
+            Fibonacci.class,
+            ArrayGrow.class
     };
 
 
@@ -65,7 +67,9 @@ public class AlgorithmMainActivity extends AppCompatActivity implements AdapterV
                 "0/1背包贪心算法",
                 "广播集合覆盖问题",
                 "广度优先搜素算法",
-                "动态规划商品问题"
+                "动态规划商品问题",
+                "Fibonacci动态规划",
+                "数组最大不连续递增子序列"
         };
 
         @Override

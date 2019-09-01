@@ -169,6 +169,8 @@
         <activity android:name=".algorithm.WideFirstActivity" />
         <activity android:name=".algorithm.DynaicPlanActivity"></activity>
         <activity android:name=".algorithm.AlgorithmMainActivity"></activity>
+        <activity android:name=".algorithm.Fibonacci"></activity>
+        <activity android:name=".algorithm.ArrayGrow"></activity>
     </application>
 
 </manifest>
