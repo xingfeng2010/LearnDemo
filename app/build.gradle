@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: DateAndTimePlugin
+//apply plugin: DateAndTimePlugin
 
 android {
 //    signingConfigs {
@@ -39,34 +39,4 @@ dependencies {
     compile(project(':FingerPrintLib')) {
         exclude group: 'com.android.support'
     }
-}
-
-dateAndTime {
-    timeFormat = 'HH:mm:ss.SSS'
-    dateFormat = 'MM/dd/yyyy'
-}
-
-class DateAndTimePlugin implements Plugin<Project> {
-
-    @Override
-    void apply(Project project) {
-        project.extensions.create("dateAndTime", DateAndTimePluginExtension)
-
-        project.task('showTime') {
-            doLast {
-                println "Current time is " + new Date().format(project.dateAndTime.timeFormat)
-            }
-        }
-
-        project.task('showDate') {
-            doLast {
-                println "Current date is " + new Date().format(project.dateAndTime.dateFormat)
-            }
-        }
-    }
-}
-
-class DateAndTimePluginExtension {
-    String timeFormat = "MM/dd/yyyyHH:mm:ss.SSS"
-    String dateFormat = "yyyy-MM-dd"
 }
