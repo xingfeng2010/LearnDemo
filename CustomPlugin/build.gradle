@@ -1,6 +1,0 @@
-apply plugin: xingfeng.DateAndtimePlugin
-
-dateAndTime {
-    timeFormat = 'HH:mm:ss.SSS'
-    dateFormat = 'MM/dd/yyyy'
-}

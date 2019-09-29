@@ -1,1 +1,2 @@
-include ':app',':FingerPrintLib',':CustomPlugin'
+include ':app',':FingerPrintLib'
+include ':buildSrc'

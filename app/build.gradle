@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
-//apply plugin: DateAndTimePlugin
+apply plugin: 'customplugin'
+
+dateAndTime {
+    timeFormat = 'HH:mm:ss.SSS'
+    dateFormat = 'MM/dd/yyyy'
+}
 
 android {
 //    signingConfigs {
