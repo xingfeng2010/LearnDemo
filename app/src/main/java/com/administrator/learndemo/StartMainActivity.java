@@ -12,13 +12,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
-import com.administrator.learndemo.algorithm.AlgorithmActivity;
 import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
-import com.administrator.learndemo.algorithm.BroadcaseCoverActivity;
-import com.administrator.learndemo.algorithm.DynaicPlanActivity;
-import com.administrator.learndemo.algorithm.WideFirstActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
+import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
@@ -53,7 +50,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ImageCompressActivity.class,
             ViewPagerActivity.class,
             ViewPagerFragmentActivity.class,
-            AlgorithmMainActivity.class
+            AlgorithmMainActivity.class,
+            ImageDownLoadActivity.class
     };
 
 
@@ -95,7 +93,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "图片压缩",
                 "ViewPager+Fragment",
                 "ViewPagerFragment",
-                "算法"
+                "算法",
+                "图片下载"
         };
 
         @Override
