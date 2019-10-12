@@ -1,14 +1,17 @@
 package com.administrator.learndemo.download;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +36,11 @@ public class ImageDownLoadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_down_load);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (PermissionChecker.checkCallingOrSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                this.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10);
+            }
+        }
     }
 
     public void downImage(View view) {
@@ -58,6 +66,8 @@ public class ImageDownLoadActivity extends AppCompatActivity {
             public void onDownloadSuccess() {
                 Log.i(TAG, "downImage onDownloadSuccess!!");
                 DownloadUtil.insertIntoAlbum(fileName, thumbNaiUrl, ImageDownLoadActivity.this);
+//                File file = new File(filePath, fileName);
+//                mediaScaner(file.toString(),fileName);
             }
 
             @Override

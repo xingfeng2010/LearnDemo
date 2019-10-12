@@ -243,6 +243,7 @@ public class DownloadUtil {
                     }
                     String tempDirStr = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "cvim";
 
+                    Log.i("ImageDownLoadActivity", "insertIntoAlbum tempDirStr: " + tempDirStr);
                     File tempDir = new File(tempDirStr);
                     if (!tempDir.exists()) {
                         tempDir.mkdirs();
@@ -261,8 +262,19 @@ public class DownloadUtil {
                         fosto.close();
 
                     } catch (Exception ex) {
+                        Log.i("ImageDownLoadActivity", "insertIntoAlbum ex: " + ex);
                         ex.printStackTrace();
                     }
+
+//                    Uri localUri = Uri.parse("file://" + file2.getAbsolutePath());
+//                    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+//                    localIntent.setData(localUri);
+//                    context.sendBroadcast(localIntent);
+
+
+//                    MediaScanner scanner = new MediaScanner(context);
+//                    scanner.scan(file2.toString());
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//如果是4.4及以上版本
                         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                         Uri contentUri = Uri.fromFile(file2); //out is your output file
@@ -271,7 +283,6 @@ public class DownloadUtil {
                     } else {
                         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
                     }
-
                 } catch (Exception e) {
                     Log.i("ImageDownLoadActivity", "insertIntoAlbum e: " + e);
                     e.printStackTrace();
