@@ -1,18 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'customplugin'
 
-dateAndTime {
-    timeFormat = 'HH:mm:ss.SSS'
-    dateFormat = 'MM/dd/yyyy'
-}
-
-HelloChen {
-    myId = 'my id'
-    myName = 'hello chen'
-    myGroup = 'my group'
-    myAddress = 'my address'
-}
-
 android {
 //    signingConfigs {
 //        config {

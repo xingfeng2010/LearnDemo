@@ -16,6 +16,7 @@ import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
+import com.administrator.learndemo.drawable.DrawableActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
@@ -51,7 +52,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ViewPagerActivity.class,
             ViewPagerFragmentActivity.class,
             AlgorithmMainActivity.class,
-            ImageDownLoadActivity.class
+            ImageDownLoadActivity.class,
+            DrawableActivity.class
     };
 
 
@@ -94,7 +96,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "ViewPager+Fragment",
                 "ViewPagerFragment",
                 "算法",
-                "图片下载"
+                "图片下载",
+                "Drawable示例"
         };
 
         @Override
