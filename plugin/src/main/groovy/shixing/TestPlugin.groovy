@@ -7,7 +7,8 @@ class TestPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        project.android.registerTransform(new AppJointTransform(project))
+       //project.android.registerTransform(new AppJointTransform(project))
+        project.android.registerTransform(new AsmTransform(project))
 
        project.task("TestTask") {
            doLast {

@@ -1,6 +1,7 @@
 package shixing
 
 import com.android.build.api.transform.*
+import com.android.build.gradle.internal.pipeline.TransformManager
 import com.google.common.collect.Sets
 import groovy.io.FileType
 import org.apache.commons.io.FileUtils
@@ -10,6 +11,9 @@ import org.gradle.api.Project
 import org.objectweb.asm.*
 import shixing.util.Compressor
 import shixing.util.Decompression
+
+import java.util.jar.JarEntry
+import java.util.jar.JarFile
 
 class AppJointTransform extends Transform {
     Project mProject
@@ -71,6 +75,13 @@ class AppJointTransform extends Transform {
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
+
+        mytestcall(transformInvocation)
+        //appJointCall(transformInvocation)
+    }
+
+    private void appJointCall(TransformInvocation invocation) {
+
 
         // Maybe contains the AppJoint class to write code into
         def maybeStubs = []
@@ -400,23 +411,30 @@ class AppJointTransform extends Transform {
 
     /**
      * Find the AppJoint class, this method doesn't change the class file
-     * @param file: the class file to be checked
-     * @param outputFile: where the modified class should be output to
+     * @param file : the class file to be checked
+     * @param outputFile : where the modified class should be output to
      * @return whether the file is AppJoint class file
      */
     boolean findAppJointClass(File file, File outputFile) {
         mProject.logger.info("找到的类名是 name is:" + file.getName())
-//        if (!file.exists() || !file.name.endsWith(".class")) {
-//            return
-//        }
-        boolean found = false;
+        mProject.logger.info("找到的类名是 outputFile is:" + outputFile.getName())
+        if (!file.exists() || !file.name.endsWith(".class")) {
+            return
+        }
+        boolean found = false
         def inputStream = new FileInputStream(file)
         ClassReader cr = new ClassReader(inputStream)
+        cr.accept(new ClassWriter(ClassWriter.COMPUTE_FRAMES),0)
         cr.accept(new ClassVisitor(Opcodes.ASM5) {
             @Override
             void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
                 super.visit(version, access, name, signature, superName, interfaces)
                 mProject.logger.info("找到的类名是 name is:" + name)
+                mProject.logger.info("找到的类名是 signature is:" + signature)
+                mProject.logger.info("找到的类名是 superName is:" + superName)
+                interfaces.each {String str ->
+                    mProject.logger.info("找到的类名是 interfaces is:" + str)
+                }
                 if (name == "com/xingfeng/FingerPrintLib/AppJoint") {
                     appJointClassFile = file
                     appJointOutputFile = outputFile
@@ -487,7 +505,9 @@ class AppJointTransform extends Transform {
                             @Override
                             void visit(String name, Object value) {
                                 valueSpecified = true;
-                                cr.interfaces.each { routerAndImpl[new Tuple2(it, value)] = cr.className }
+                                cr.interfaces.each {
+                                    routerAndImpl[new Tuple2(it, value)] = cr.className
+                                }
                                 super.visit(name, value)
                             }
 
@@ -577,6 +597,59 @@ class AppJointTransform extends Transform {
             repackageAction.call()
         } else {
             return repackageAction
+        }
+    }
+
+    private void mytestcall(TransformInvocation invocation) {
+        for (TransformInput input : invocation.getInputs()) {
+            input.getJarInputs().each { jarInput ->
+                File src = jarInput.getFile()
+                mProject.logger.info("jar包路径:" + jarInput.file.getAbsolutePath())
+                mProject.logger.info("jar包名称:" + jarInput.name)
+                myTestClosure(invocation, jarInput, { File outputFile, File inputFile -> return findAppJointClass(inputFile, outputFile)})
+            }
+        }
+    }
+
+    private void myTestClosure(TransformInvocation transformInvocation, JarInput jarInput, Closure closure) {
+        def jarName = jarInput.name
+
+        mProject.logger.info("解压包名:" + jarName)
+        File unzipDir = new File(
+                jarInput.file.getParent(),
+                jarName.replace(":", "") + "_unzip")
+        mProject.logger.info("解压路径:" + unzipDir.getPath())
+        if (unzipDir.exists()) {
+            unzipDir.delete()
+        }
+        unzipDir.mkdirs()
+        Decompression.uncompress(jarInput.file, unzipDir)
+
+        File repackageFolder = new File(
+                jarInput.file.getParent(),
+                jarName.replace(":", "") + "_repackage"
+        )
+
+        FileUtils.copyDirectory(unzipDir, repackageFolder)
+
+        boolean repackageLater = false
+        unzipDir.eachFileRecurse(FileType.FILES, { File it ->
+            File outputFile = new File(repackageFolder, it.absolutePath.split("_unzip")[1])
+            boolean result = closure.call(outputFile, it)
+            if (result) repackageLater = true
+        })
+
+        def repackageAction = {
+            def dest = transformInvocation.outputProvider.getContentLocation(
+                    jarName, jarInput.contentTypes, jarInput.scopes, Format.JAR)
+            Compressor zc = new Compressor(dest.getAbsolutePath())
+            zc.compress(repackageFolder.getAbsolutePath())
+        }
+
+        if (!repackageLater) {
+            repackageAction.call()
+        } else {
+//            return repackageAction
         }
     }
 }

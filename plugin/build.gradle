@@ -14,9 +14,12 @@ dependencies {
     implementation gradleApi() //gradle sdk
     implementation localGroovy() //groovy sdk
 
-    implementation 'com.android.tools.build:gradle-api:3.0.0'
-    implementation 'org.ow2.asm:asm:5.1'
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'com.android.tools.build:gradle:3.0.1'
+    implementation 'com.android.tools.build:gradle-api:3.0.1'
+    // ASM 相关
+    implementation 'org.ow2.asm:asm:7.1'
+    implementation 'org.ow2.asm:asm-util:7.1'
+    implementation 'org.ow2.asm:asm-commons:7.1'
 }
 
 uploadArchives {
