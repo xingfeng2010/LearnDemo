@@ -1,5 +1,6 @@
 package shixing
 
+import jdk.internal.org.objectweb.asm.Opcodes
 import org.objectweb.asm.MethodVisitor
 
 public class TestMethodVisitor extends MethodVisitor {
@@ -16,7 +17,7 @@ public class TestMethodVisitor extends MethodVisitor {
         mv.visitLdcInsn(" [ASM 测试] method in " + owner + " ,name=" + name);
         mv.visitMethodInsn(INVOKESTATIC,
                 "android/util/Log", "i", "(Ljava/lang/String;Ljava/lang/String;)I", false);
-        mv.visitInsn(POP);
+        mv.visitInsn(Opcodes.POP);
 
         super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
 
@@ -25,6 +26,6 @@ public class TestMethodVisitor extends MethodVisitor {
         mv.visitLdcInsn(" method in " + owner + " ,name=" + name);
         mv.visitMethodInsn(INVOKESTATIC,
                 "android/util/Log", "i", "(Ljava/lang/String;Ljava/lang/String;)I", false);
-        mv.visitInsn(POP);
+        mv.visitInsn(Opcodes.POP);
     }
 }

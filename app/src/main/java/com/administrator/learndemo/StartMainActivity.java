@@ -29,10 +29,12 @@ import com.administrator.learndemo.view.ViewActivity;
 import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
+import com.xingfeng.FingerPrintLib.asm.Time;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
     private LayoutInflater mLayoutInflator;
+    private Time mTime = new Time();
     private Class[] classes = new Class[]{
             MainActivity.class,
             NewRoutePlanActivity.class,
@@ -68,6 +70,14 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         mListView.setOnItemClickListener(this);
 
         mLayoutInflator = LayoutInflater.from(this);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        mTime.myCount();
+        mTime.myDeal();
     }
 
     @Override
