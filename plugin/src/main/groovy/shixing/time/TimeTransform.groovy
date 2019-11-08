@@ -25,7 +25,7 @@ class TimeTransform extends Transform {
 
     def myTimeClassFile
 
-    def myTimeOutputFile
+    File myTimeOutputFile
 
     @Override
     String getName() {
@@ -121,6 +121,7 @@ class TimeTransform extends Transform {
         ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS)
         ClassVisitor visitor = new AddTimeClassVisitor(cw)
         cr.accept(visitor, 0)
+        myTimeOutputFile.bytes = cw.toByteArray()
         inputStream.close()
 
         // After all class modifications are done, repackage all deferred jar repackage
@@ -192,6 +193,7 @@ class TimeTransform extends Transform {
         boolean found = false;
         def inputStream = new FileInputStream(file)
         ClassReader cr = new ClassReader(inputStream)
+        mProject.logger.info("找到的类名 Name：" + cr.className);
         cr.accept(new ClassVisitor(Opcodes.ASM4) {
             @Override
             void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
