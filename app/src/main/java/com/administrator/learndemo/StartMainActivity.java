@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
+import com.administrator.learndemo.activitymanager.TestActivity;
 import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
@@ -55,7 +56,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ViewPagerFragmentActivity.class,
             AlgorithmMainActivity.class,
             ImageDownLoadActivity.class,
-            DrawableActivity.class
+            DrawableActivity.class,
+            TestActivity.class
     };
 
 
@@ -107,7 +109,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "ViewPagerFragment",
                 "算法",
                 "图片下载",
-                "Drawable示例"
+                "Drawable示例",
+                "Test ASM"
         };
 
         @Override
