@@ -10,8 +10,8 @@ class TestPlugin implements Plugin<Project> {
     void apply(Project project) {
        //project.android.registerTransform(new AppJointTransform(project))
 //        project.android.registerTransform(new AsmTransform(project))
-//        project.android.registerTransform(new TimeTransform(project))
-        project.android.registerTransform(new ActivityTransform(project))
+        project.android.registerTransform(new TimeTransform(project))
+//        project.android.registerTransform(new ActivityTransform(project))
 
        project.task("TestTask") {
            doLast {
