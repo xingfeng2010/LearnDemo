@@ -1,10 +1,12 @@
 package com.xingfeng.FingerPrintLib.asm;
 
-import android.util.Log;
-
 public class AppTest {
+    public static long timer;
 
     public AppTest() {
-        Log.i("DEBUG_TEST","AppTest is inist!!");
+    }
+
+    public void sleepTime() throws Exception {
+        Thread.sleep(100);
     }
 }

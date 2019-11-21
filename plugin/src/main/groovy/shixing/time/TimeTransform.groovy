@@ -27,6 +27,10 @@ class TimeTransform extends Transform {
 
     File myTimeOutputFile
 
+    def appTestClassFile
+
+    File appTestOutputFile
+
     @Override
     String getName() {
         return TimeTransform.getSimpleName()
@@ -102,7 +106,7 @@ class TimeTransform extends Transform {
             }
         }
 
-        modules.each {JarInput jarInput ->
+        modules.each { JarInput jarInput ->
             def repackageAction = traversalJar(
                     transformInvocation,
                     jarInput,
@@ -122,6 +126,14 @@ class TimeTransform extends Transform {
         ClassVisitor visitor = new AddTimeClassVisitor(cw)
         cr.accept(visitor, 0)
         myTimeOutputFile.bytes = cw.toByteArray()
+        inputStream.close()
+
+        inputStream = new FileInputStream(appTestClassFile)
+        cr = new ClassReader(inputStream)
+        cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS)
+        visitor = new AppTestClassVisitor(cw)
+        cr.accept(visitor, 0)
+        appTestOutputFile.bytes = cw.toByteArray()
         inputStream.close()
 
         // After all class modifications are done, repackage all deferred jar repackage
@@ -201,6 +213,10 @@ class TimeTransform extends Transform {
                 if (name == "com/xingfeng/FingerPrintLib/asm/Time") {
                     myTimeClassFile = file
                     myTimeOutputFile = outputFile
+                    found = true
+                } else if (name == "com/xingfeng/FingerPrintLib/asm/AppTest") {
+                    appTestClassFile = file
+                    appTestOutputFile = outputFile
                     found = true
                 }
             }

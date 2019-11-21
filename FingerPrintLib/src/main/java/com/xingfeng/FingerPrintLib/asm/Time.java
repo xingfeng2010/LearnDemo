@@ -11,7 +11,7 @@ public class Time {
     public void myCount() {
         int i = 5;
         int j = 10;
-        Log.i("DEBUG_TEST","moduleApplications size:" + moduleApplications.size());
+        Log.i("DEBUG_TEST", "moduleApplications size:" + moduleApplications.size());
     }
 
     public void myDeal() {

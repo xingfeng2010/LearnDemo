@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.administrator.learndemo.R;
 import com.xingfeng.FingerPrintLib.asm.AppTest;
+import com.xingfeng.FingerPrintLib.asm.Time;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +23,7 @@ public class TestActivity extends AppCompatActivity {
         Log.i("DEBUG_TEST", " start size:"+ moduleApplications.size());
         setContentView(R.layout.activity_test);
         Log.i("DEBUG_TEST", " end size:"+ moduleApplications.size());
+
+        AppTest appTest = new AppTest();
     }
 }

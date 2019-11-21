@@ -2,6 +2,7 @@ package shixing
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import shixing.learn.LearnTransform
 import shixing.time.TimeTransform
 
 class TestPlugin implements Plugin<Project> {
@@ -12,6 +13,7 @@ class TestPlugin implements Plugin<Project> {
 //        project.android.registerTransform(new AsmTransform(project))
         project.android.registerTransform(new TimeTransform(project))
 //        project.android.registerTransform(new ActivityTransform(project))
+//        project.android.registerTransform(new LearnTransform(project))
 
        project.task("TestTask") {
            doLast {

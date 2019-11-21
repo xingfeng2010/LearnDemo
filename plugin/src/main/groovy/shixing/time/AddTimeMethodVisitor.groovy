@@ -31,6 +31,8 @@ public class AddTimeMethodVisitor extends MethodVisitor {
             case Opcodes.RETURN:
                 System.out.print("注入一个AppTest实例");
                 insertApplicationAdd("com/xingfeng/FingerPrintLib/asm/AppTest");
+//                testFieldValue();
+                testAddMethod()
                 break
         }
 
@@ -41,6 +43,7 @@ public class AddTimeMethodVisitor extends MethodVisitor {
             mv.visitLdcInsn("end");
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
         }
+
         super.visitInsn(opcode)
     }
 
@@ -52,5 +55,21 @@ public class AddTimeMethodVisitor extends MethodVisitor {
         mv.visitMethodInsn(Opcodes.INVOKESPECIAL, applicationName, "<init>", "()V", false);
         mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, "java/util/List", "add", "(Ljava/lang/Object;)Z", true);
         mv.visitInsn(Opcodes.POP);
+    }
+
+    void testFieldValue() {
+        mv.visitVarInsn(Opcodes.ALOAD, 0)
+        mv.visitVarInsn(Opcodes.ILOAD, 1)
+        mv.visitFieldInsn(Opcodes.PUTFIELD, "com/xingfeng/FingerPrintLib/asm/AppTest", "f", "I")
+        mv.visitInsn(Opcodes.RETURN)
+    }
+
+    void testAddMethod() {
+        mv.visitCode()
+        mv.visitVarInsn(Opcodes.ALOAD, 0)
+        mv.visitFieldInsn(Opcodes.GETFIELD, "com/xingfeng/FingerPrintLib/asm/AppTest", "f", "I")
+        mv.visitInsn(Opcodes.IRETURN)
+        mv.visitMaxs(1, 1)
+        mv.visitEnd()
     }
 }
