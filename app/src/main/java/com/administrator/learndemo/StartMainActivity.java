@@ -35,7 +35,6 @@ import com.xingfeng.FingerPrintLib.asm.Time;
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
     private LayoutInflater mLayoutInflator;
-    private Time mTime = new Time();
     private Class[] classes = new Class[]{
             MainActivity.class,
             NewRoutePlanActivity.class,
@@ -77,9 +76,6 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onPostResume() {
         super.onPostResume();
-
-        mTime.myCount();
-        mTime.myDeal();
     }
 
     @Override
