@@ -1,6 +1,7 @@
 package com.administrator.learndemo.activitymanager;
 
 import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import com.administrator.learndemo.R;
 import com.xingfeng.FingerPrintLib.asm.AppTest;
 import com.xingfeng.FingerPrintLib.asm.Time;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +30,9 @@ public class TestActivity extends AppCompatActivity {
 
         AppTest appTest = new AppTest();
 
-        getAudiDuration();
+//        getAudiDuration();
+
+        getOnLingDuration();
     }
 
     /**
@@ -37,11 +41,27 @@ public class TestActivity extends AppCompatActivity {
      */
     private String getAudiDuration() {
         long startTime = System.currentTimeMillis();
-        String url = "http://pre-cdn.iov.changan.com.cn/static/cvrtmp3/tspdemo/a9955d796467bd3d543855c891cc4218e72d282cbfe10347a4386705e78cdf43157f230ae081cce089e184873541d6be.mp3";
+        String url = "http://pre-cdn.iov.changan.com.cn/static/cvrtmp3/tspdemo/e7f55f42abfc9575d62096b02a46219997489dc8aaab0c263fe2b7e4f1090cf45364fae18ae87cc1fe6e248a66e93396";
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(url, new HashMap<String, String>());
         String duration = mmr.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_DURATION);
         Log.i("DEBUG_TEST", " audio duration:" + duration + " cost time:" + (System.currentTimeMillis() - startTime));
         return duration;
+    }
+
+    private void getOnLingDuration() {
+        long startTime = System.currentTimeMillis();
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource("http://pre-cdn.iov.changan.com.cn/static/cvrtmp3/tspdemo/e7f55f42abfc9575d62096b02a46219997489dc8aaab0c263fe2b7e4f1090cf45364fae18ae87cc1fe6e248a66e93396");
+            mediaPlayer.prepare();
+            int duration = mediaPlayer.getDuration();
+            Log.i("DEBUG_TEST", " audio duration:" + duration + " cost time:" + (System.currentTimeMillis() - startTime));
+            if (0 != duration) {
+                mediaPlayer.release();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
