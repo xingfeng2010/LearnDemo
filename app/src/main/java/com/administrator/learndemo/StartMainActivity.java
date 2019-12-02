@@ -25,6 +25,8 @@ import com.administrator.learndemo.mediaplayer.MediaActivity;
 import com.administrator.learndemo.mp4.Mp4Activity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
+import com.administrator.learndemo.testenum.AppShowState;
+import com.administrator.learndemo.testenum.TestAppState;
 import com.administrator.learndemo.video.VideoActivity;
 import com.administrator.learndemo.view.ViewActivity;
 import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
@@ -76,6 +78,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onPostResume() {
         super.onPostResume();
+
+        TestAppState testAppState = new TestAppState();
+        testAppState.setAppState(AppShowState.RUNNING);
     }
 
     @Override
