@@ -1,0 +1,52 @@
+/***************************************************************************************
+ * 另外，Gradle大量地使用了Groovy闭包的delegate机制。简单来说，delegate机制可以使我们将一个
+ * 闭包中的执行代码的作用对象设置成任意其他对象
+ *
+ * https://www.cnblogs.com/davenkin/p/gradle-learning-3.html
+ **************************************************************************************/
+class Child {
+    private String name
+}
+
+class Parent {
+    Child child = new Child();
+
+    void configChild(Closure c) {
+        c.delegate = child
+        c.setResolveStrategy Closure.DELEGATE_FIRST
+        c()
+    }
+}
+
+def parent = new Parent()
+parent.configChild {
+    name = "child name"
+}
+
+
+task task8 {
+    doFirst {
+        println parent.child.name
+    }
+}
+/***************************************************************************************
+ 在上面的例子中，当我们调用configChild()方法时，我们并没有指出name属性是属于Child的，但是它的确是在设置Child的name属性。
+ 事实上光从该方法的调用中，我们根本不知道name是属于哪个对象的，你可能会认为它是属于Parent的。真实情况是，在默认情况下，
+ name的确被认为是属于Parent的，但是我们在configChild()方法的定义中做了手脚，使其不再访问Parent中的name（Parent也没有name属性），
+ 而是Child的name。在configChild()方法中，我们将该方法接受的闭包的delegate设置成了child，然后将该闭包的ResolveStrategy设置成了
+ DELEGATE_FIRST。这样，在调用configChild()时，所跟闭包中代码被代理到了child上，即这些代码实际上是在child上执行的。此外，
+ 闭包的ResolveStrategy在默认情况下是OWNER_FIRST，即它会先查找闭包的owner（这里即parent），如果owner存在，则在owner上执行闭包中的代码。
+ 这里我们将其设置成了DELEGATE_FIRST，即该闭包会首先查找delegate（本例中即child），如果找到，该闭包便会在delegate上执行。
+ 对于上面的showDescription3，便是这种情况。当然，实际情况会稍微复杂一点，比如showDescription3()方法会在内部调用showDescription3的configure()方法，
+ 再在configure()方法中执行闭包中的代码。
+
+ 你可能会发现，在使用Gradle时，我们并没有像上面的parent.configChild()一样指明方法调用的对象，而是在build.gradle文件中直接调用task()，
+ apply()和configuration()方法等，这是因为在没有说明调用对象的情况下，Gradle会自动将调用对象设置成当前Project。比如调用apply()方法和调用project.apply()方法
+ 的效果是一样的。查查Gradle的Project文档，你会发现这些方法都是Project类的方法。
+
+ 另外举个例子，对于configurations()方法（它的作用我们将在后面的文章中讲到），该方法实际上会将所跟闭包的delegate设置成ConfigurationContainer，
+ 然后在该ConfigurationContainer上执行闭包中的代码。再比如，dependencies()方法，该方法会将所跟闭包的delegate设置成DependencyHandler。
+
+ 还有，Project还定义了configure(Object object,Closure configureClosure)方法，该方法是专门用来配置对象的（比如Task），它会将configureClosure的delegate
+ 设置成object，之后configureClosure中的执行代码其实是在object上执行的。和Groovy Bean一样，delegate机制的一个好处是可以增加所创建DSL的可读性。
+ **************************************************************************************/

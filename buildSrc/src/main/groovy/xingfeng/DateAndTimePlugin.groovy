@@ -10,12 +10,12 @@ class DateAndTimePlugin implements Plugin<Project> {
     static final String EXTENSION_NAME = 'HelloChen'
 
     void apply(Project project) {
-//        /**注册一个扩展容器，扩展容器可以使我们在一个闭包中为task赋值*/
-//        project.extensions.create(EXTENSION_NAME, BuildPluginExtension)
-//
-//        testTime(project)
-//
-//        addTask(project)
+        /**注册一个扩展容器，扩展容器可以使我们在一个闭包中为task赋值*/
+        project.extensions.create(EXTENSION_NAME, BuildPluginExtension)
+
+        testTime(project)
+
+        addTask(project)
     }
 
     private void addTask(Project project) {

@@ -1,0 +1,77 @@
+/***************************************************************************************
+ *在前面的文章中我们讲到，设置和读取Project的Property是使用Gradle的一个很重要的方面。
+ * 比如，很多Plugin都会向Project中加入额外的Property，在使用这些Plugin时，我们需要对这些Property进行赋值。
+ * Gradle在默认情况下已经为Project定义了很多Property，其中比较常用的有：
+ * project：Project本身
+ * name：Project的名字
+ * path：Project的绝对路径
+ * description：Project的描述信息
+ * buildDir：Project构建结果存放目录
+ * version：Project的版本号
+ *
+ * https://www.cnblogs.com/davenkin/p/gradle-learning-5.html
+ **************************************************************************************/
+version = 'this is the project version'
+description = 'this is the project description'
+
+task showProjectProperties {
+    doFirst {
+        println version
+        println project.description
+    }
+}
+
+/***************************************************************************************
+ 在build.gradle文件中向Project添加额外的Property时，我们并不能直接定义，而是应该通过ext来定义。
+ 如果要添加一个名为property1的Property，我们应该:
+
+ https://www.cnblogs.com/davenkin/p/gradle-learning-5.html
+ **************************************************************************************/
+ext.property1 = "this is property1"
+
+/************ 另外，我们也可以通过闭包的方式：*******************/
+ext {
+    property2 = "this is property2"
+}
+
+/************ 在定义了Property后，使用这些Property时我们则不需要ext，而是可以直接访问：*/
+
+task showProperties {
+    doFirst {
+        println property1
+        println property2
+    }
+}
+
+/************ 事实上，任何实现了ExtensionAware接口的Gradle对象都可以通过这种方式来添加额外的Property，比如Task也实现了该接口。*/
+/************ 通过命令行参数定义Property。Gradle还提供了-P命令行参数来设置Property，比如：*/
+task showCommandLieProperties {
+    doFirst {
+        println property3
+    }
+}
+
+/***************************************************************************************
+ 在调用gradle命令时，通过-P参数传入该Property：
+ gradle -Pproperty3="this is property3" showCommandLieProperties
+
+ https://www.cnblogs.com/davenkin/p/gradle-learning-5.html
+ **************************************************************************************/
+
+/************ 四：通过JVM系统参数定义Property：***************************************
+ * 我们知道，在java中，我们可以通过-D参数定义JVM的系统参数，然后在代码中可以可以通过System.getProperty()进行获取。
+ * 在Gradle中，我们也可以通过-D的方式向Project传入Property，只是此时我们需要遵循一些约定：每一个通过-D方式声明的Property
+ * 都需要以“org.gradle.project”为前缀，对于上面的showCommandLieProperties，我们也可以通过以下方式设置property3：
+ *
+ * gradle -Dorg.gradle.project.property3="this is another property3" showCommandLieProperties
+**************************************************************************************/
+
+/************ 五：通过环境变量设置Property：***************************************
+ * 我们还可以通过设置环境变量的方式设置Project的Property。这种方式和（3）一样，需要我们遵循一些约定：
+ * 在定义环境变量时，每一个Property都需要以“ORG_GRADLE_PROJECT_”为前缀：
+ *
+ * export ORG_GRADLE_PROJECT_property3="this is yet another property3"
+ *
+ * 在调用showCommandLieProperties时，我们便不需要传入命令行参数了：
+ * gradle showCommandLieProperties
+ **************************************************************************************/

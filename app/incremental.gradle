@@ -1,0 +1,46 @@
+/***************************************************************************************
+ * 为了解决这样的问题，Gradle引入了增量式构建的概念。在增量式构建中，我们为每个Task定义输入（inputs）和输入（outputs），
+ * 如果在执行一个Task时，如果它的输入和输出与前一次执行时没有发生变化，那么Gradle便会认为该Task是最新的（UP-TO-DATE），
+ * 因此Gradle将不予执行。一个Task的inputs和outputs可以是一个或多个文件，可以是文件夹，还可以是Project的某个Property，
+ * 甚至可以是某个闭包所定义的条件。
+ *
+ * 每个Task都拥有inputs和outputs属性，他们的类型分别为TaskInputs和TaskOutputs。在下面的例子中，我们展示了这么一种场景：
+ * 名为combineFileContent的Task从sourceDir目录中读取所有的文件，然后将每个文件的内容合并到destination.txt文件中。
+ * 让我们先来看看没有定义Task输入和输出的情况:
+ *
+ * https://www.cnblogs.com/davenkin/p/gradle-learning-4.html
+ **************************************************************************************/
+task combineFileContentNonIncremental {
+    def sources = fileTree('src')
+
+    def destination = file('destination.txt')
+
+    doLast {
+        destination.withPrintWriter { writer ->
+            sources.each {source ->
+                writer.println source.text
+            }
+        }
+    }
+}
+
+/***************************************************************************************
+ * 这时，我们可以将sources声明为该Task的inputs，而将destination声明为outputs，重新创建一个Task如下：
+ *
+ * https://www.cnblogs.com/davenkin/p/gradle-learning-4.html
+ **************************************************************************************/
+task combineFileContentNonIncremental2 {
+    def sources = fileTree('src')
+    def destination = file('destination.txt')
+
+    inputs.dir sources
+    outputs.file destination
+
+    doLast {
+        destination.withPrintWriter { writer ->
+            sources.each {source ->
+                writer.println source.text
+            }
+        }
+    }
+}

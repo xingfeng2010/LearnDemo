@@ -3,6 +3,14 @@ apply plugin: 'customplugin'
 /** 应用下面插件导致应用编译后直接安装不起，暂屏蔽*/
 apply plugin: 'testplugin'
 
+//    apply from: 'delegate.gradle'
+apply from: 'incremental.gradle'
+apply from: 'customproperty.gradle'
+apply from: 'dependency.gradle'
+apply from: 'customtask.gradle'
+//apply from: 'customplugin.gradle'
+
+
 android {
 //    signingConfigs {
 //        config {
@@ -42,3 +50,95 @@ dependencies {
         exclude group: 'com.android.support'
     }
 }
+
+task helloWorld {
+    println "Hello World!"
+}
+
+task task2(dependsOn:helloWorld) {
+    doLast {
+        println "I am task 3"
+    }
+}
+
+task showTasks {
+    println tasks.class
+    println tasks.size()
+}
+
+tasks.create(name: 'task4') {
+    println 'task4'
+}
+
+task task3(dependsOn:helloWorld) {
+    doFirst {
+        println "I am task 2"
+    }
+}
+
+task task5 {
+    description = "this is task5"
+    println description
+}
+
+task task6 {
+    doFirst {
+        println "task6 des:"+ description
+    }
+}
+
+task6 {
+    description = "1.0.2"
+}
+
+task6.configure {
+    description = "1.0.3"
+}
+
+/***************************************************************************************
+ * 以下3个Task完成的功能均相同，即先设置Task的description属性，在将其输出到命令行。
+ * 但是，他们对description的设置方式是不同的。对于showDescription1，我们在定义一个
+ * Task的同时便设置description；对于showDescription2，其本身便是Project的一个Property；
+ * 而对于showDescription3，我们是在一个和它同名的方法中设置description。
+ **************************************************************************************/
+task showDescription1 {
+    doFirst {
+        description = 'this is task showDescription'
+        println description
+    }
+}
+
+task showDescription2 {
+    doFirst {
+        println description
+    }
+}
+
+showDescription2.description = 'this is task showDescription'
+
+task showDescription3 {
+    doFirst {
+        println description
+    }
+}
+
+showDescription3 {
+    description = 'this is task showDescription'
+}
+/***************************************************************************************
+ * 事实上，对于每一个Task，Gradle都会在Project中创建一个同名的Property，所以我们可以将该Task当作Property来访问，
+ * showDescription2便是这种情况。另外，Gradle还会创建一个同名的方法，该方法接受一个闭包，我们可以使用该方法来
+ * 配置Task，showDescription3便是这种情况。
+ * *************************************************************************************/
+
+/***************************************************************************************
+ * 要读懂Gradle，我们首先需要了解Groovy语言中的两个概念，一个Groovy中的Bean概念，一个是Groovy闭包的delegate机制。
+ *Groovy中的Bean和Java中的Bean有一个很大的不同，即Groovy为每一个字段都会自动生成getter和setter，并且我们可以通过像访问字段本身一样调用getter和setter，比如：
+ * *************************************************************************************/
+class GroovyBeanExample {
+    private String name
+}
+
+def bean = new GroovyBeanExample()
+bean.name = 'this is name'
+println bean.name

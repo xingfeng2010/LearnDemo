@@ -1,0 +1,30 @@
+/****************************************************************
+ * Gradle中的Task要么是由不同的Plugin引入的，要么是我们自己在build.gradle文件中直接创建的。
+ * 在默认情况下，我们所创建的Task是DefaultTask类型，该类型是一个非常通用的Task类型，而在有些时候，
+ * 我们希望创建一些具有特定功能的Task，比如Copy和Jar等。还有时候，我们希望定义自己创建的Task类型，
+ * 在本文中，我们以定义一个简单的HelloWorldTask为例，讲解如何自定义一个Task类型，并且如何对其进行配置。
+ ****************************************************************/
+class HelloWorldTask extends DefaultTask {
+    @Optional
+    String message = 'I am davenkin'
+
+    @TaskAction
+    def hello(){
+        println "hello world $message"
+    }
+}
+
+task helloTask1(type:HelloWorldTask)
+
+
+task helloTask2(type:HelloWorldTask){
+    message ="I am a programmer"
+}
+
+/****************************************************************
+ 在上例中，我们定义了一个名为HelloWorldTask的Task，它需要继承自DefaultTask，
+ 它的作用是向命令行输出一个字符串。@TaskAction表示该Task要执行的动作，即在调用该Task时，
+ hello()方法将被执行。另外，message被标记为@Optional，表示在配置该Task时，message是可选的。
+ 在定义好HelloWorldTask后，我们创建了两个Task实例，第一个hello使用了默认的message值，
+ 而第二个hello1在创建时重新设置了message的值。
+ ****************************************************************/
