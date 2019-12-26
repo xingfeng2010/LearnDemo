@@ -36,6 +36,7 @@ import com.administrator.learndemo.video.VideoActivity;
 import com.administrator.learndemo.view.ViewActivity;
 import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
+import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 import com.xingfeng.FingerPrintLib.asm.Time;
 
@@ -65,7 +66,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             AlgorithmMainActivity.class,
             ImageDownLoadActivity.class,
             DrawableActivity.class,
-            TestActivity.class
+            TestActivity.class,
+            WebviewCameraActivity.class
     };
 
 
@@ -120,7 +122,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "算法",
                 "图片下载",
                 "Drawable示例",
-                "Test ASM"
+                "Test ASM",
+                "WebView拍照"
         };
 
         @Override

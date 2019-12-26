@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitymanager.TestActivity"></activity>
+        <activity android:name=".webview.WebviewCameraActivity"></activity>
+        <activity android:name=".activitymanager.TestActivity" />
         <activity android:name=".drawable.DrawableActivity" />
         <activity android:name=".download.ImageDownLoadActivity" />
         <activity android:name=".map.MainActivity">
@@ -142,6 +143,9 @@
         <activity android:name=".algorithm.AlgorithmMainActivity" />
         <activity android:name=".algorithm.Fibonacci" />
         <activity android:name=".algorithm.ArrayGrow" />
+        <!-- 网页页面 -->
+        <activity android:name=".webview.MyWebviewActivity">
+        </activity>
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -152,6 +156,21 @@
             android:authorities="com.test.provider" />
 
         <service android:name="com.amap.api.location.APSService" />
+
+        <!-- =================7.0上读取文件========================== -->
+        <!--参考资料https://blog.csdn.net/lmj623565791/article/details/72859156-->
+        <!--authorities：{app的包名}.provider
+        grantUriPermissions：必须是true，表示授予 URI 临时访问权限
+        exported：必须是false
+        resource：中的@xml/provider_paths是我们接下来要添加的文件-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_config"/>
+        </provider>
     </application>
     <uses-feature android:name="android.hardware.camera" />
 
@@ -163,10 +182,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 调用硬件相机权限 -->
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 调用硬件相机权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" /> <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
