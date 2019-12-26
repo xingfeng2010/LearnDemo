@@ -21,9 +21,7 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
 public class WebviewCameraActivity extends AppCompatActivity {
-    private final static String url = "http://tspdemo.changan.com.cn/static/chezhugushi/public/test4/index.html";
     private static final String TAG = "WebviewCameraActivity";
-    private boolean videoFlag = false;
 
     private EditText mUrlEdt;
     private Button mWebviewBtn;
