@@ -1,8 +1,6 @@
 package com.administrator.learndemo.viewpage.change;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.administrator.learndemo.R;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * Example about replacing fragments inside a ViewPager. I'm using

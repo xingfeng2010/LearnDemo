@@ -1,11 +1,5 @@
 package com.administrator.learndemo.algorithm;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-
-import com.administrator.learndemo.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;

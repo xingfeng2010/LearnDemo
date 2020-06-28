@@ -237,4 +237,6 @@
     <dimen name="thincar_help_text">16sp</dimen>
     <dimen name="size_280dp">280dp</dimen>
     <dimen name="size_520dp">520dp</dimen>
+
+    <dimen name="xiaoan_size">50dp</dimen>
 </resources>

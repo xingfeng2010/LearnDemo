@@ -4,12 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,6 +15,7 @@ import android.widget.Toast;
 import com.administrator.learndemo.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 

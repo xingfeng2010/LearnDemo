@@ -1,12 +1,13 @@
 package com.administrator.learndemo.viewpage.change;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.administrator.learndemo.R;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Example about replacing fragments inside a ViewPager. I'm using

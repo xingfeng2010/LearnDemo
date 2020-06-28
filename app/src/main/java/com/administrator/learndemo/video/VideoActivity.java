@@ -1,14 +1,7 @@
 package com.administrator.learndemo.video;
 
 import android.graphics.SurfaceTexture;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.opengl.GLSurfaceView;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
@@ -16,9 +9,10 @@ import android.view.SurfaceHolder;
 import android.view.TextureView;
 
 import com.administrator.learndemo.R;
-import com.administrator.learndemo.mp4.VideoRender;
 
 import java.io.IOException;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class VideoActivity extends AppCompatActivity implements TextureView.SurfaceTextureListener,
         MediaPlayer.OnPreparedListener,  SurfaceHolder.Callback{

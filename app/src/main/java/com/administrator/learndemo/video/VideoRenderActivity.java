@@ -1,9 +1,10 @@
 package com.administrator.learndemo.video;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.administrator.learndemo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class VideoRenderActivity extends AppCompatActivity {
 

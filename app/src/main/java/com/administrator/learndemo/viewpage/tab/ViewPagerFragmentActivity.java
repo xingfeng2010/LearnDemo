@@ -3,15 +3,15 @@ package com.administrator.learndemo.viewpage.tab;
 import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 
 import com.administrator.learndemo.R;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 //  各个Fragment的加载顺序：
 //      如果 DEFAULT_PAGE = 1：
@@ -73,7 +73,7 @@ public class ViewPagerFragmentActivity extends FragmentActivity {
         super.onResume();
     }
     
-    private class ViewPageChangeListener implements OnPageChangeListener {
+    private class ViewPageChangeListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageSelected(int position) {
             setCurrentItem(position);

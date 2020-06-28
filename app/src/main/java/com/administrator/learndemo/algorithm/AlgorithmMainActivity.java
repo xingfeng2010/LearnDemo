@@ -2,7 +2,6 @@ package com.administrator.learndemo.algorithm;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +10,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.administrator.learndemo.DaoCheActivity;
-import com.administrator.learndemo.ImageCompressActivity;
 import com.administrator.learndemo.R;
-import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
-import com.administrator.learndemo.camera.CameraActivity;
-import com.administrator.learndemo.content.TestProviderActivity;
-import com.administrator.learndemo.keystore.KeyStoreActivity;
-import com.administrator.learndemo.map.MainActivity;
-import com.administrator.learndemo.map.NewRoutePlanActivity;
-import com.administrator.learndemo.mediaplayer.MediaActivity;
-import com.administrator.learndemo.mp4.Mp4Activity;
-import com.administrator.learndemo.opengl.OpenGLActivity;
-import com.administrator.learndemo.opengl.image.ImageRenderActivity;
-import com.administrator.learndemo.video.VideoActivity;
-import com.administrator.learndemo.view.ViewActivity;
-import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
-import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
-import com.administrator.learndemo.zhiwen.ZhiWenActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AlgorithmMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;

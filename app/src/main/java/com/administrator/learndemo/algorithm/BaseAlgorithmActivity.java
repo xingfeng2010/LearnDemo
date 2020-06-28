@@ -2,10 +2,11 @@ package com.administrator.learndemo.algorithm;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.administrator.learndemo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseAlgorithmActivity extends AppCompatActivity {
     private TextView mTextView;

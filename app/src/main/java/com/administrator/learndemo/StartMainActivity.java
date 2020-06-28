@@ -2,8 +2,6 @@ package com.administrator.learndemo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +17,6 @@ import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.drawable.DrawableActivity;
-import com.administrator.learndemo.dynamic.IPrint;
-import com.administrator.learndemo.dynamic.MyInvocationHandler;
-import com.administrator.learndemo.dynamic.RealPrint;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.map.MainActivity;
@@ -38,9 +33,8 @@ import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
-import com.xingfeng.FingerPrintLib.asm.Time;
 
-import java.lang.reflect.Proxy;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;

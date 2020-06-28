@@ -2,7 +2,6 @@ package com.administrator.learndemo.activitymanager;
 
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 @FileAnnotation("TestActivity")
 public class TestActivity extends AppCompatActivity {

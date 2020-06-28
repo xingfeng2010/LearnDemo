@@ -4,11 +4,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.administrator.learndemo.opengl.AirHockeyRenderer;
-import com.administrator.learndemo.opengl.OpenGLActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class ImageRenderActivity extends AppCompatActivity {
 

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.ValueCallback;
@@ -20,6 +19,8 @@ import com.administrator.learndemo.webview.utils.GetPathFromUri4kitkat;
 import com.administrator.learndemo.webview.utils.WebviewGlobals;
 
 import java.io.File;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by HaiyuKing

@@ -7,7 +7,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,6 +65,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewRoutePlanActivity extends AppCompatActivity implements AMapNaviListener, AMapNaviViewListener, View.OnClickListener, AMap.OnMyLocationChangeListener {
 

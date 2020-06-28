@@ -1,11 +1,5 @@
 package com.administrator.learndemo.algorithm;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-
-import com.administrator.learndemo.R;
-
 public class DynaicPlanActivity extends BaseAlgorithmActivity {
     @Override
     protected void startCompile() {

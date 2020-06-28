@@ -1,11 +1,6 @@
 package com.administrator.learndemo.algorithm;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-
-import com.administrator.learndemo.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * 集合覆盖问题:

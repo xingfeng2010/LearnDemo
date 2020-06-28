@@ -1,10 +1,7 @@
 package com.administrator.learndemo;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -12,9 +9,8 @@ import android.widget.ImageView;
 import com.administrator.learndemo.util.Utils;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static java.lang.Math.floor;
 import static java.lang.Math.random;

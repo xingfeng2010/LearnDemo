@@ -1,12 +1,11 @@
 package com.administrator.learndemo.drawable;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.administrator.learndemo.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DrawableActivity extends AppCompatActivity {
 

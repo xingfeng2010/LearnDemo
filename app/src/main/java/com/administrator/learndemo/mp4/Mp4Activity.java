@@ -9,9 +9,6 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
@@ -20,7 +17,8 @@ import android.view.TextureView;
 import com.administrator.learndemo.R;
 
 import java.nio.ByteBuffer;
-import java.util.HashMap;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressWarnings("aa")
 public class Mp4Activity extends AppCompatActivity implements SurfaceTexture.OnFrameAvailableListener, TextureView.SurfaceTextureListener{

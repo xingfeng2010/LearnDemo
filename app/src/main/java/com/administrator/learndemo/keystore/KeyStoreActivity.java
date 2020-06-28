@@ -3,7 +3,6 @@ package com.administrator.learndemo.keystore;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +25,8 @@ import java.security.cert.CertificateException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class KeyStoreActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
