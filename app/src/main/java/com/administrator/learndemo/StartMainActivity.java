@@ -15,6 +15,7 @@ import com.administrator.learndemo.activitymanager.TestActivity;
 import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
+import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.drawable.DrawableActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
@@ -61,7 +62,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ImageDownLoadActivity.class,
             DrawableActivity.class,
             TestActivity.class,
-            WebviewCameraActivity.class
+            WebviewCameraActivity.class,
+            DaggerTestActivity.class
     };
 
 
@@ -117,7 +119,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "图片下载",
                 "Drawable示例",
                 "Test ASM",
-                "WebView拍照"
+                "WebView拍照",
+                "DAGGER示例"
         };
 
         @Override
