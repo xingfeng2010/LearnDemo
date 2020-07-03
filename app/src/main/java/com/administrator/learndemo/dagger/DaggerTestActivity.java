@@ -28,7 +28,7 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
         ButterKnife.bind(this);
         DaggerCommonComponent.
                 builder().
-                commonModule(new CommonModule(this)).
+                commonModule(new CommonModule(this, "DAGGER")).
                 build().
                 inject(this);
     }
