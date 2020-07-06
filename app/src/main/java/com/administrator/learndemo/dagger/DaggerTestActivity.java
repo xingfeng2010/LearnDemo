@@ -35,9 +35,9 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
 
     @OnClick(R.id.btn_login)
     void login() {
-        Toast.makeText(this, "LGON_IN", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "LGON_IN", Toast.LENGTH_SHORT).show();
 
-        //loginPresenter.login(new User());
+        loginPresenter.login(new User());
     }
 
     @Override
