@@ -137,20 +137,15 @@ public class RoutePlanActivity extends AppCompatActivity implements AMapLocation
             myTrafficStyle.setCongestedColor(getResources().getColor(R.color.route_congested_color));
             myTrafficStyle.setSeriousCongestedColor(getResources().getColor(R.color.route_serious_congested_color));
             mAMap.setMyTrafficStyle(myTrafficStyle);
-            mAMap.setOnMapLoadedListener(new AMap.OnMapLoadedListener() {
-                @Override
-                public void onMapLoaded() {
-                    mAMap.setTrafficEnabled(true);
-                    mAMap.setMapTextZIndex(3);
-                    mAMap.setOnMapTouchListener(new AMap.OnMapTouchListener() {
-                        @Override
-                        public void onTouch(MotionEvent motionEvent) {
-                            // removeTimeCount();
-                        }
-                    });
-
-
-                }
+            mAMap.setOnMapLoadedListener(() -> {
+                mAMap.setTrafficEnabled(true);
+                mAMap.setMapTextZIndex(3);
+                mAMap.setOnMapTouchListener(new AMap.OnMapTouchListener() {
+                    @Override
+                    public void onTouch(MotionEvent motionEvent) {
+                        // removeTimeCount();
+                    }
+                });
             });
 
             mAMap.getUiSettings().setZoomControlsEnabled(false);
@@ -256,7 +251,7 @@ public class RoutePlanActivity extends AppCompatActivity implements AMapLocation
                     mAddPointMaker.destroy();
                     mAddPointMaker = null;
                     mWayPointStrings.add(marker.getSnippet());
-                  //  mIsNewCalculate = true;
+                    //  mIsNewCalculate = true;
                     calculateDriveRoute();
 
                 }
@@ -274,7 +269,7 @@ public class RoutePlanActivity extends AppCompatActivity implements AMapLocation
                     LatLng latLng = marker.getPosition();
                     wayList.remove(new NaviLatLng(latLng.latitude, latLng.longitude));
                     mWayPointStrings.remove(Integer.valueOf(marker.getTitle()));
-                 //   mIsNewCalculate = true;
+                    //   mIsNewCalculate = true;
                     calculateDriveRoute();
                 }
             });

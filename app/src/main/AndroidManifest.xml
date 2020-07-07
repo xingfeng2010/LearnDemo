@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dagger.DaggerTestActivity"></activity>
+        <activity android:name=".kotlin.KotlinActivity"></activity>
+        <activity android:name=".dagger.DaggerTestActivity" />
         <activity android:name=".webview.WebviewCameraActivity" />
         <activity android:name=".activitymanager.TestActivity" />
         <activity android:name=".drawable.DrawableActivity" />
@@ -145,7 +146,7 @@
         <activity android:name=".algorithm.AlgorithmMainActivity" />
         <activity android:name=".algorithm.Fibonacci" />
         <activity android:name=".algorithm.ArrayGrow" /> <!-- 网页页面 -->
-        <activity android:name=".webview.MyWebviewActivity"></activity>
+        <activity android:name=".webview.MyWebviewActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -154,7 +155,6 @@
         <provider
             android:name=".content.TestContentProvider"
             android:authorities="com.test.provider" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -182,8 +182,8 @@ authorities：{app的包名}.provider
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 指纹识别权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />

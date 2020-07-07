@@ -20,6 +20,7 @@ import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.drawable.DrawableActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
+import com.administrator.learndemo.kotlin.KotlinActivity;
 import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
 import com.administrator.learndemo.mediaplayer.MediaActivity;
@@ -63,7 +64,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             DrawableActivity.class,
             TestActivity.class,
             WebviewCameraActivity.class,
-            DaggerTestActivity.class
+            DaggerTestActivity.class,
+            KotlinActivity.class
     };
 
 
@@ -120,7 +122,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "Drawable示例",
                 "Test ASM",
                 "WebView拍照",
-                "DAGGER示例"
+                "DAGGER示例",
+                "Kotlin示例"
         };
 
         @Override
