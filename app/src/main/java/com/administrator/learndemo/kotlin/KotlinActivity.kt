@@ -83,9 +83,9 @@ class KotlinActivity : AppCompatActivity() {
      * 可以使用无参的 when 表达式来改造下：
      * 无参数的 when 表达式的条件分支必须是 boolean 类型
      */
-    fun mixOptimized(c1: Color, c2: Color) = when {
-
-    }
+//    fun mixOptimized(c1: Color, c2: Color) = when {
+//
+//    }
 
     /**
      *  在 Java 中对某个对象进行类型转换的时候时候，需要通过 instanceof 来判断是否可以被强转
