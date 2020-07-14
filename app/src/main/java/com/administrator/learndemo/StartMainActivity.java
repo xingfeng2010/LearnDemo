@@ -171,4 +171,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         TestDynamic testDynamic = new TestDynamic();
         testDynamic.testDynamicPropxy();
     }
+
+    private void testHttp() {
+
+    }
 }
