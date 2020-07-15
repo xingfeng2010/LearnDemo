@@ -2,6 +2,7 @@ package com.administrator.learndemo.dagger;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Button;
 
@@ -26,11 +27,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -59,21 +63,104 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
                 build().
                 inject(this);
 
+//        testRxjava();
+//        testMap();
+//        testJustBuffer();
 
-        testRxjava();
+        testZip();
+    }
 
-        testMap();
+    /**
+     * 组合的过程是分别从 两根水管里各取出一个事件 来进行组合, 并且一个事件只能被使用一次, 组合的顺序是严格按照事件发送的顺利 来进行的, 也就是说不会出现圆形1 事件和三角形B 事件进行合并, 也不可能出现圆形2 和三角形A 进行合并的情况.
+     * 最终下游收到的事件数量 是和上游中发送事件最少的那一根水管的事件数量 相同. 这个也很好理解, 因为是从每一根水管 里取一个事件来进行合并, 最少的 那个肯定就最先取完 , 这个时候其他的水管尽管还有事件 , 但是已经没有足够的事件来组合了, 因此下游就不会收到剩余的事件了.
+     */
+    private void testZip() {
+        Observable observable1 = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                Log.d(TAG, "1");
+                e.onNext(1);
+                SystemClock.sleep(1000);
+                Log.d(TAG, "2");
+                e.onNext(2);
+                SystemClock.sleep(1000);
+                Log.d(TAG, "3");
+                e.onNext(3);
+                SystemClock.sleep(1000);
+                Log.d(TAG, "4");
+                e.onNext(4);
+                SystemClock.sleep(1000);
+                Log.d(TAG, "onComplete");
+                e.onComplete();
+            }
+        }).subscribeOn(Schedulers.io());
 
-        testJustBuffer();
+        Observable observable2 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                Log.d(TAG, "A");
+                e.onNext("A");
+                SystemClock.sleep(1000);
+                Log.d(TAG, "B");
+                e.onNext("B");
+                SystemClock.sleep(1000);
+                Log.d(TAG, "C");
+                e.onNext("C");
+                SystemClock.sleep(1000);
+                Log.d(TAG, "onComplete");
+                e.onComplete();
+            }
+        }).subscribeOn(Schedulers.io());
+
+        Observable.zip(observable1, observable2, new BiFunction<Integer, String, String>() {
+            @Override
+            public String apply(Integer a, String b) throws Exception {
+                return a + b;
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String o) throws Exception {
+                Log.d(TAG, "SystemClock:" + o);
+            }
+        });
+
+        Observable.zip(new ObservableSource<String>() {
+
+                           @Override
+                           public void subscribe(Observer<? super String> observer) {
+                               observer.onNext("henan");
+                           }
+                       }, new ObservableSource<String>() {
+
+                           @Override
+                           public void subscribe(Observer<? super String> observer) {
+                               observer.onNext("zhengzhou");
+                           }
+                       }, new BiFunction<String, String, String>() {
+
+                           @Override
+                           public String apply(String s1, String s2) throws Exception {
+                               Log.e(TAG, "testZip: s1：" + s1);
+                               return s1 + s2;
+                           }
+                       }
+        ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(@NonNull String s) throws Exception {
+                        Log.e(TAG, "testZip: 成功：" + s + "\n");
+                    }
+                });
     }
 
     private void testJustBuffer() {
-        Observable.just("test1","test2","test3","test4","test5","test6").buffer(2)
+        Observable.just("test1", "test2", "test3", "test4", "test5", "test6").buffer(2)
                 .subscribe(new Consumer<List<String>>() {
                     @Override
                     public void accept(List<String> strings) throws Exception {
                         Log.e(TAG, "SINGLE ARRAY");
-                        for (String str: strings) {
+                        for (String str : strings) {
                             Log.e(TAG, "testJustBuffer:" + str);
                         }
                     }
@@ -82,7 +169,7 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
 
     /**
      * 两者都可以实现数据集合中一对多事件的转换，后者会按发送的顺序获取接收结果，前者可能是乱序接收（不确定哪个事件先完成）。
-     *
+     * <p>
      * 一对多事件转换：在flatMap集合中例如可以操作一个公司实体，并转换为单个部门实体，返回后在后续的accept中，
      * 又可以使用单个部门实体对每个成员进行逻辑处理。
      */
