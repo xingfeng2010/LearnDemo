@@ -27,6 +27,7 @@ import com.administrator.learndemo.mediaplayer.MediaActivity;
 import com.administrator.learndemo.mp4.Mp4Activity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
+import com.administrator.learndemo.retrofit.RetrofitActivity;
 import com.administrator.learndemo.testenum.AppShowState;
 import com.administrator.learndemo.testenum.TestAppState;
 import com.administrator.learndemo.video.VideoActivity;
@@ -65,7 +66,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             TestActivity.class,
             WebviewCameraActivity.class,
             DaggerTestActivity.class,
-            KotlinActivity.class
+            KotlinActivity.class,
+            RetrofitActivity.class
     };
 
 
@@ -123,7 +125,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "Test ASM",
                 "WebView拍照",
                 "DAGGER示例",
-                "Kotlin示例"
+                "Kotlin示例",
+                "RETROFIT示例"
         };
 
         @Override

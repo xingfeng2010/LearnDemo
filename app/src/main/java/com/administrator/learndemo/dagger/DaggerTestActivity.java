@@ -37,6 +37,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
@@ -67,7 +68,204 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
 //        testMap();
 //        testJustBuffer();
 
-        testZip();
+//        testZip();
+
+//        testThread();
+
+//        testSimple();
+
+//        testObserver();
+
+//        helloworldComplexDisposable();
+
+//        helloworldPlus();
+        
+        testFilter();
+    }
+
+    /**
+     * RxJava提供了大量的操作符来完成对数据的处理，这些操作符也可以理解为函数。如果把RxJava比作一条数据流水线，
+     * 那么操作符就是一道工序，数据通过这些工序的加工变换，组装，最后生产出我们需要的数据。
+     *
+     * 记住：操作符都是对被观察发出数据的操作。
+     */
+    private void testFilter() {
+        Observable.just("姚明","阿联","摇头叹琦","大侄子")
+                .filter(new Predicate<String>() {
+                    @Override
+                    public boolean test(String s) throws Exception {
+                        Log.d(TAG, "test: " + s);
+                        return s.equals("摇头叹琦"); // 只检查出摇头叹琦
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.d(TAG, "accept: " + s);
+                    }
+                });
+    }
+
+    /**
+     * 使用Create方法创建被观察者，并实现subscribe方法，
+     * 接收一个ObservableEmitter对象，即被观察者的发射器，发射器能够发出数据和事件
+     * 使用链式调用，让代码看起来更加整洁，
+     * 上面发出数据和事件，下面接收数据和事件
+     *
+     * 观察者还是原来的观察者，被观察者则使用create()的方法创建出来，并实现了subscribe()方法，
+     * 接收一个ObservableEmitter对象，即被观察者的发射器，发射器能够发出数据和事件。
+     */
+    private void helloworldPlus() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                Log.d(TAG, "subscribe: send hello world");
+                emitter.onNext("hello world");
+                Log.d(TAG, "subscribe: send No");
+                emitter.onNext("No");
+                Log.d(TAG, "subscribe: send No");
+                emitter.onNext("No");
+                Log.d(TAG, "subscribe: send complete");
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "onSubscribe: ");
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.d(TAG, "onNext: " + s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: ");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete: ");
+            }
+        });
+    }
+
+    private void helloworldComplexDisposable() {
+        Observer<String> observer = new Observer<String>() {
+            Disposable disposable;
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                disposable = d;
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.d(TAG, "onNext: 2，" + s);
+                if (s.equals("NO")) {
+                    disposable.dispose();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete: 3，");
+            }
+        };
+
+        Observable.just("Hello world", "NO", "EDD").subscribe(observer);
+    }
+
+    private void testObserver() {
+        Observer<String> observer = new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                d.dispose();
+                Log.d(TAG, "onSubscribe isDisposed: " + d.isDisposed());
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.d(TAG, "onSubscribe onNext: " + s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onSubscribe onComplete: ");
+            }
+        };
+
+        Observable.just("Hello World!").subscribe(observer);
+    }
+
+    private void testSimple() {
+        // 创建消费者，消费者接收一个String类型的事件
+        Consumer<String> consumer = new Consumer<String>() {
+
+            @Override
+            public void accept(String s) throws Exception {
+                Log.d(TAG, "accept: 0," + s);
+            }
+        };
+        Observable.just("Hello WOrld").subscribe(consumer);
+    }
+
+    /**
+     * 在不指定线程的情况下， RxJava 遵循的是线程不变的原则，即：在哪个线程调用 subscribe()，就在哪个线程生产事件；
+     * 在哪个线程生产事件，就在哪个线程消费事件。如果需要切换线程，就需要用到 Scheduler 。
+     * <p>
+     * 在RxJava 中，Scheduler，相当于线程控制器，RxJava 通过它来指定每一段代码应该运行在什么样的线程。RxJava 已经内置
+     * 了几个Scheduler ，它们已经适合大多数的使用场景：
+     * Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。
+     * Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。
+     * Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和newThread()差不多，
+     * 区别在于io()的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下io()比newThread()更有效率。
+     * 不要把计算工作放在io()中，可以避免创建不必要的线程。
+     * Schedulers.computation(): 计算所使用的Scheduler。这个计算指的是CPU密集型计算，即不会被I/O 等操作限制性能的操作，
+     * 例如图形的计算。这个Scheduler使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在computation()中，否则I/O操作
+     * 的等待时间会浪费 CPU。
+     * <p>
+     * 另外， Android 还有一个专用的 AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。
+     * 有了这几个 Scheduler ，就可以使用 subscribeOn() 和 observeOn() 两个方法来对线程进行控制了。
+     * <p>
+     * *subscribeOn(): 指定subscribe()所发生的线程，即Observable.OnSubscribe被激活时所处的线程。或者叫做事件产生的线程。
+     * *observeOn(): 指定Subscriber 所运行在的线程。或者叫做事件消费的线程。
+     */
+    private void testThread() {
+        Observable.just("aa", "bb", "cc")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.d(TAG, "onNext :" + s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
@@ -217,6 +415,10 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
                 });
     }
 
+    /**
+     * map操作符能够完成数据类型的转换。被观察者发送出一个student，而观察者想要接收一个developer(两个都是简单的实体类)，
+     * 那么在student发送给观察者之前，需要对student进行一些培训，让它转换成一个developer。
+     */
     private void testRxjava() {
         Student[] students = new Student[10];
         for (int i = 0; i < students.length; i++) {
