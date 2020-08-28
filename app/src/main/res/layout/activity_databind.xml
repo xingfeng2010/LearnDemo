@@ -1,8 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> presenter.onChangeUserNameClick()}"
+            android:text="改变用户名" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> presenter.onChangeUserPassClick()}"
+            android:text="改变密码" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> presenter.onChangeUserAgeClick()}"
+            android:text="改变年纪" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userInfo.password, default = 123456}"
+            android:afterTextChanged="@{presenter.afterUserPasswordChanged}"
+            android:hint="密码" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userInfo.userName, default = xingxing}"
+            android:afterTextChanged="@{presenter.afterTextChanged}"
+            android:hint="用户名" />
+
+        <TextView
+            android:id="@+id/userAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userInfo.age, default = 12}" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> presenter.onUserNamekClick(userInfo)}"
+            android:text="@{userInfo.userName, default = xingxing}" />
+
+        <TextView
+            android:id="@+id/userPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userInfo.password, default = 123456}" />
+    </LinearLayout>
+
     <data class="LearnDataBind">
-        <import type="com.administrator.learndemo.mvvm.data.UserInfo"/>
-        <import type="com.administrator.learndemo.mvvm.DataBindActivity.UserPresenter"/>
+
+        <import type="com.administrator.learndemo.mvvm.data.UserInfo" />
+
+        <import type="com.administrator.learndemo.mvvm.DataBindActivity.UserPresenter" />
 
         <variable
             name="userInfo"
@@ -12,36 +72,4 @@
             name="presenter"
             type="UserPresenter" />
     </data>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{userInfo.userName, default = xingxing}"
-            android:onClick="@{() -> presenter.onUserNamekClick(userInfo)}"
-            />
-
-        <TextView
-            android:id="@+id/userPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{userInfo.password, default = 123456}"
-            />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:afterTextChanged="@{presenter.afterTextChanged}"
-            android:hint="用户名" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:afterTextChanged="@{presenter.afterUserPasswordChanged}"
-            android:hint="密码" />
-    </LinearLayout>
 </layout>

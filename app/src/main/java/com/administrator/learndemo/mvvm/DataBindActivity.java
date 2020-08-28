@@ -43,5 +43,17 @@ public class DataBindActivity extends AppCompatActivity {
             xiaoMing.setPassword(s.toString());
             activityDatabindBinding.setUserInfo(xiaoMing);
         }
+
+        public void onChangeUserNameClick() {
+            xiaoMing.setUserName(xiaoMing.getUserName() + "**");
+        }
+
+        public void onChangeUserPassClick() {
+            xiaoMing.setUserName(xiaoMing.getPassword() + "--");
+        }
+
+        public void onChangeUserAgeClick() {
+            xiaoMing.setUserName(xiaoMing.getAge() + "..");
+        }
     }
 }
