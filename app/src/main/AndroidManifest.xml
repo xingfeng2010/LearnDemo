@@ -9,15 +9,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".retrofit.RetrofitActivity"></activity>
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".dagger.DaggerTestActivity" />
         <activity android:name=".webview.WebviewCameraActivity" />
         <activity android:name=".activitymanager.TestActivity" />
-        <activity android:name=".drawable.DrawableActivity" />
         <activity android:name=".download.ImageDownLoadActivity" />
         <activity android:name=".map.MainActivity">
             <intent-filter>
@@ -147,8 +146,9 @@
         <activity android:name=".algorithm.DynaicPlanActivity" />
         <activity android:name=".algorithm.AlgorithmMainActivity" />
         <activity android:name=".algorithm.Fibonacci" />
-        <activity android:name=".algorithm.ArrayGrow" /> <!-- 网页页面 -->
+        <activity android:name=".algorithm.ArrayGrow" />
         <activity android:name=".webview.MyWebviewActivity" />
+        <activity android:name=".mvvm.DataBindActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -175,9 +175,11 @@ authorities：{app的包名}.provider
         -->
         <service android:name="com.amap.api.location.APSService" />
     </application>
+
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

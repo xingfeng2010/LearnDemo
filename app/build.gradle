@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'customplugin'
 /** 应用下面插件导致应用编译后直接安装不起，暂屏蔽*/
-apply plugin: 'testplugin'
+//apply plugin: 'testplugin'
 
 //    apply from: 'delegate.gradle'
 apply from: 'incremental.gradle'

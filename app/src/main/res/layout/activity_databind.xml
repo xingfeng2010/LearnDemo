@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="LearnDataBind">
         <import type="com.administrator.learndemo.mvvm.data.UserInfo"/>
+        <import type="com.administrator.learndemo.mvvm.DataBindActivity.UserPresenter"/>
 
         <variable
             name="userInfo"
             type="UserInfo" />
+
+        <variable
+            name="presenter"
+            type="UserPresenter" />
     </data>
 
     <LinearLayout
@@ -19,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{userInfo.userName, default = xingxing}"
+            android:onClick="@{() -> presenter.onUserNamekClick(userInfo)}"
             />
 
         <TextView
@@ -27,5 +31,17 @@
             android:layout_height="wrap_content"
             android:text="@{userInfo.password, default = 123456}"
             />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:afterTextChanged="@{presenter.afterTextChanged}"
+            android:hint="用户名" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:afterTextChanged="@{presenter.afterUserPasswordChanged}"
+            android:hint="密码" />
     </LinearLayout>
 </layout>
