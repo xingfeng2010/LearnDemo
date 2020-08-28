@@ -5,7 +5,6 @@ package com.administrator.learndemo.keystore;
  */
 
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -23,6 +22,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
+
+import androidx.annotation.RequiresApi;
 
 class Decryptor {
 

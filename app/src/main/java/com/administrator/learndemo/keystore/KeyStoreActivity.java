@@ -2,7 +2,6 @@ package com.administrator.learndemo.keystore;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +25,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class KeyStoreActivity extends AppCompatActivity {
@@ -74,6 +74,7 @@ public class KeyStoreActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void decryptText() {
         try {
             textShow.setText(decryptor

@@ -3,7 +3,6 @@ package com.administrator.learndemo.webview;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 import com.administrator.learndemo.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;

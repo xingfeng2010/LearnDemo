@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -13,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.administrator.learndemo.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Administrator on 2018/2/25.

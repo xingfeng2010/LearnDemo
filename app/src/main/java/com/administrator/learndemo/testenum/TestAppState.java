@@ -1,6 +1,5 @@
 package com.administrator.learndemo.testenum;
 
-import android.support.annotation.IntDef;
 
 public class TestAppState {
     @AppShowState.AppState

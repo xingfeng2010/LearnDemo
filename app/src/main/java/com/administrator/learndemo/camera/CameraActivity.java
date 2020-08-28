@@ -3,12 +3,11 @@ package com.administrator.learndemo.camera;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
-import android.view.SurfaceView;
 
 import com.administrator.learndemo.R;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CameraActivity extends AppCompatActivity {

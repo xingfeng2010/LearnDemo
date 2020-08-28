@@ -17,7 +17,6 @@ import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
-import com.administrator.learndemo.drawable.DrawableActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.kotlin.KotlinActivity;
@@ -25,6 +24,7 @@ import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
 import com.administrator.learndemo.mediaplayer.MediaActivity;
 import com.administrator.learndemo.mp4.Mp4Activity;
+import com.administrator.learndemo.mvvm.DataBindActivity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
 import com.administrator.learndemo.retrofit.RetrofitActivity;
@@ -62,12 +62,12 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ViewPagerFragmentActivity.class,
             AlgorithmMainActivity.class,
             ImageDownLoadActivity.class,
-            DrawableActivity.class,
             TestActivity.class,
             WebviewCameraActivity.class,
             DaggerTestActivity.class,
             KotlinActivity.class,
-            RetrofitActivity.class
+            RetrofitActivity.class,
+            DataBindActivity.class
     };
 
 
@@ -121,12 +121,12 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "ViewPagerFragment",
                 "算法",
                 "图片下载",
-                "Drawable示例",
                 "Test ASM",
                 "WebView拍照",
                 "DAGGER示例",
                 "Kotlin示例",
-                "RETROFIT示例"
+                "RETROFIT示例",
+                "MVVM"
         };
 
         @Override

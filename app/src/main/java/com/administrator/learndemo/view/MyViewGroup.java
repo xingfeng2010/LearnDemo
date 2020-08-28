@@ -1,11 +1,12 @@
 package com.administrator.learndemo.view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Administrator on 2018/2/25.

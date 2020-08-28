@@ -1,54 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/navi_resouce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:visibility="gone"
-        >
-
-        <com.amap.api.navi.AMapNaviView
-            android:id="@+id/navi_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:visibility="visible"/>
-
-        <!--guang zhu-->
-        <com.amap.api.navi.view.TrafficProgressBar
-            android:id="@+id/myTrafficBar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:visibility="gone"
-            />
-
-        <com.amap.api.navi.view.OverviewButtonView
-            android:id="@+id/myOverviewButtonView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone">
-        </com.amap.api.navi.view.OverviewButtonView>
-
-        <!--che dao xin xi-->
-        <com.amap.api.navi.view.DriveWayView
-            android:id="@+id/myDriveWayView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-        </com.amap.api.navi.view.DriveWayView>
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/navi_stop1"
@@ -56,9 +17,9 @@
             android:layout_height="50dp"
             android:layout_marginRight="100dp"
             android:layout_marginTop="400dp"
-            android:src="@mipmap/navi_stop"
-            />
+            android:src="@mipmap/navi_stop" />
 
+        <!--guang zhu-->
         <RelativeLayout
             android:layout_width="250dp"
             android:layout_height="160dp"
@@ -67,50 +28,6 @@
 
             android:background="@drawable/blue_corner">
 
-
-            <TextView
-                android:id="@+id/retain_distance"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_alignLeft="@+id/next_street"
-                android:layout_alignStart="@+id/next_street"
-                android:layout_marginTop="8dp"
-                android:gravity="bottom|center"
-                android:text="555"
-                android:textColor="@color/white"
-                android:textSize="50dp"
-                android:visibility="visible"/>
-
-            <com.amap.api.navi.view.NextTurnTipView
-                android:id="@+id/myDirectionView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="15dp"
-                android:layout_toRightOf="@+id/retain_distance"
-                ></com.amap.api.navi.view.NextTurnTipView>
-
-
-            <!--  <TextView
-                  android:id="@+id/textView"
-                  android:layout_width="30dp"
-                  android:layout_height="30dp"
-                  android:layout_marginTop="10dp"
-                  android:layout_toRightOf="@+id/retain_distance"
-                  android:gravity="bottom|left"
-                  android:text="后"
-                  android:textColor="@color/white"
-                  android:textSize="30px" />-->
-
-            <TextView
-                android:id="@+id/next_street"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/retain_distance"
-                android:layout_marginLeft="10dp"
-                android:gravity="top"
-                android:text="aaaaaaaa"
-                android:textColor="@color/white"
-                android:textSize="20dp"/>
 
             <RelativeLayout
                 android:id="@+id/rest_infomation"
@@ -133,7 +50,7 @@
                     android:gravity="bottom|left"
                     android:text="剩余"
                     android:textColor="@color/white"
-                    android:textSize="12dp"/>
+                    android:textSize="12dp" />
 
 
                 <TextView
@@ -142,7 +59,7 @@
                     android:layout_height="40dp"
                     android:layout_toRightOf="@+id/rest"
                     android:textColor="@color/white"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
 
 
                 <TextView
@@ -154,9 +71,85 @@
                     android:layout_toRightOf="@+id/rest_distance"
                     android:gravity="right"
                     android:textColor="@color/white"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/next_street"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/retain_distance"
+                android:layout_marginLeft="10dp"
+                android:gravity="top"
+                android:text="aaaaaaaa"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+
+            <!--  <TextView
+                  android:id="@+id/textView"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_toRightOf="@+id/retain_distance"
+                  android:gravity="bottom|left"
+                  android:text="后"
+                  android:textColor="@color/white"
+                  android:textSize="30px" />-->
+
+            <TextView
+                android:id="@+id/retain_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_alignLeft="@+id/next_street"
+                android:layout_alignStart="@+id/next_street"
+                android:layout_marginTop="8dp"
+                android:gravity="bottom|center"
+                android:text="555"
+                android:textColor="@color/white"
+                android:textSize="50dp"
+                android:visibility="visible" />
+
+            <com.amap.api.navi.view.NextTurnTipView
+                android:id="@+id/myDirectionView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/retain_distance"></com.amap.api.navi.view.NextTurnTipView>
         </RelativeLayout>
+
+        <com.amap.api.navi.AMapNaviView
+            android:id="@+id/navi_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:visibility="visible" />
+
+        <!--che dao xin xi-->
+        <com.amap.api.navi.view.DriveWayView
+            android:id="@+id/myDriveWayView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"></com.amap.api.navi.view.DriveWayView>
+
+        <com.amap.api.navi.view.OverviewButtonView
+            android:id="@+id/myOverviewButtonView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"></com.amap.api.navi.view.OverviewButtonView>
+
+        <com.amap.api.navi.view.TrafficProgressBar
+            android:id="@+id/myTrafficBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone" />
 
 
     </RelativeLayout>
@@ -167,6 +160,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/navi_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/innermap_nav_box_result"
+            android:text=" 开始导航"
+            android:textSize="20px" />
+
+
+        <ListView
+            android:id="@+id/innermap_nav_box_result"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/innermap_nav_pos"
+            android:dividerHeight="5dp" />
 
         <RelativeLayout
             android:id="@+id/innermap_nav_pos"
@@ -182,12 +192,6 @@
                 android:layout_marginRight="2dp"
                 android:layout_marginTop="5dp">
 
-                <ImageView
-                    android:id="@+id/innermap_nav_box_back"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@mipmap/innermap_back_left"/>
-
                 <EditText
                     android:id="@+id/innermap_nav_box_mypos"
                     android:layout_width="147dp"
@@ -200,7 +204,13 @@
                     android:focusableInTouchMode="true"
                     android:imeOptions="flagNoFullscreen|actionSearch"
                     android:singleLine="true"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/innermap_nav_box_back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/innermap_back_left" />
 
 
             </RelativeLayout>
@@ -226,28 +236,10 @@
                     android:focusableInTouchMode="true"
                     android:imeOptions="flagNoFullscreen|actionSearch"
                     android:singleLine="true"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </RelativeLayout>
 
         </RelativeLayout>
-
-
-        <ListView
-            android:id="@+id/innermap_nav_box_result"
-            android:layout_width="180dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@+id/innermap_nav_pos"
-            android:dividerHeight="5dp"/>
-
-        <Button
-            android:id="@+id/navi_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/innermap_nav_box_result"
-            android:text=" 开始导航"
-            android:textSize="20px"
-            />
 
     </RelativeLayout>
 
@@ -256,5 +248,5 @@
         android:id="@+id/route_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/innermap_nav_box"/>
+        android:layout_above="@+id/innermap_nav_box" />
 </RelativeLayout>
