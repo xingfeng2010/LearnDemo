@@ -27,16 +27,17 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{userInfo.password, default = 123456}"
             android:afterTextChanged="@{presenter.afterUserPasswordChanged}"
-            android:hint="密码" />
+            android:hint="密码"
+            android:text="@{userInfo.password, default = 123456}" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{userInfo.userName, default = xingxing}"
             android:afterTextChanged="@{presenter.afterTextChanged}"
-            android:hint="用户名" />
+            android:hint="用户名"
+            android:text="@{userInfo.userName, default = xingxing}" />
+
 
         <TextView
             android:id="@+id/userAge"
@@ -56,6 +57,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{userInfo.password, default = 123456}" />
+
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{goods.name}" />
+
+
+        <EditText
+            android:id="@+id/edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={goods.name}" />
+
+        <TextView
+            android:id="@+id/testMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bindMap[key],default=xx}" />
+
+        <TextView
+            android:id="@+id/testList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bindList[index],default=yy}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变数据"
+            android:onClick="changeData"/>
     </LinearLayout>
 
     <data class="LearnDataBind">
@@ -64,6 +97,12 @@
 
         <import type="com.administrator.learndemo.mvvm.DataBindActivity.UserPresenter" />
 
+        <import type="com.administrator.learndemo.mvvm.data.ObservableGoods" />
+
+        <import type="androidx.databinding.ObservableList" />
+
+        <import type="androidx.databinding.ObservableMap" />
+
         <variable
             name="userInfo"
             type="UserInfo" />
@@ -71,5 +110,25 @@
         <variable
             name="presenter"
             type="UserPresenter" />
+
+        <variable
+            name="goods"
+            type="ObservableGoods" />
+
+        <variable
+            name="bindMap"
+            type="ObservableMap&lt;String,String&gt;" />
+
+        <variable
+            name="bindList"
+            type="ObservableList&lt;String&gt;" />
+
+        <variable
+            name="index"
+            type="int" />
+
+        <variable
+            name="key"
+            type="String" />
     </data>
 </layout>
