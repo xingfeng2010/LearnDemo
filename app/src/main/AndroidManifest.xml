@@ -149,6 +149,7 @@
         <activity android:name=".algorithm.ArrayGrow" />
         <activity android:name=".webview.MyWebviewActivity" />
         <activity android:name=".mvvm.DataBindActivity" />
+        <activity android:name=".mvvm.ImageActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

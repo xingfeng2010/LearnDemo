@@ -25,6 +25,7 @@ import com.administrator.learndemo.map.NewRoutePlanActivity;
 import com.administrator.learndemo.mediaplayer.MediaActivity;
 import com.administrator.learndemo.mp4.Mp4Activity;
 import com.administrator.learndemo.mvvm.DataBindActivity;
+import com.administrator.learndemo.mvvm.ImageActivity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
 import com.administrator.learndemo.retrofit.RetrofitActivity;
@@ -67,7 +68,7 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             DaggerTestActivity.class,
             KotlinActivity.class,
             RetrofitActivity.class,
-            DataBindActivity.class
+            ImageActivity.class
     };
 
 
