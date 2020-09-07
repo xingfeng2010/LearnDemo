@@ -14,10 +14,11 @@ import com.administrator.learndemo.mvvm.viewmodel.ImageViewModel;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-public class ImageActivity extends AppCompatActivity {
+public class ImageActivity extends AppCompatActivity implements LifecycleOwner {
 
     private ActivityImageBinding mBinding;
     private ImageViewModel mViewModel;
@@ -27,6 +28,7 @@ public class ImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_image);
+        mBinding.setLifecycleOwner(this);
         mViewModel = new ViewModelProvider(
                 this, new ViewModelProvider.AndroidViewModelFactory(getApplication())
         ).get(ImageViewModel.class);

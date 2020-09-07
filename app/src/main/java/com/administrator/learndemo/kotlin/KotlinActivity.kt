@@ -1,12 +1,18 @@
 package com.administrator.learndemo.kotlin
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.graphics.Color
 import android.graphics.Color.RED
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.administrator.learndemo.R
+import com.administrator.learndemo.mvvm.ImageActivity
 import kotlinx.android.synthetic.main.activity_kotlin.*
+import retrofit2.http.HTTP
 
 class KotlinActivity : AppCompatActivity() {
 
@@ -33,7 +39,55 @@ class KotlinActivity : AppCompatActivity() {
 
         testWhen(3)
 
-        testFor();
+        testFor()
+
+        testKotlin()
+    }
+
+    private fun testKotlin() {
+        val callIntent: Intent = Uri.parse("tel:15313222").let { number ->
+            Intent(Intent.ACTION_DIAL, number)
+        }
+
+        val wetInten: Intent = Uri.parse("www.baidu.com").let { webpage ->
+            Intent(Intent.ACTION_VIEW, webpage)
+        }
+
+        //发送带有附件的电子邮件
+        //调用某对象的apply函数，在函数块内可以通过 this 指代该对象。返回值为该对象自己。
+        Intent(Intent.ACTION_SEND).apply {
+            // The intent does not have a URI, so declare the "text/plain" MIME type
+            type = "PLAIN_TEXT_TYPE"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("jon@example.com")) // recipients
+            putExtra(Intent.EXTRA_SUBJECT, "Email subject")
+            putExtra(Intent.EXTRA_TEXT, "Email message text")
+            putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"))
+        }
+
+        //验证是否存在可接收 Intent 的应用
+        val activities: List<ResolveInfo> = packageManager.queryIntentActivities(callIntent, PackageManager.MATCH_DEFAULT_ONLY)
+        val hasMath: Boolean = activities.isEmpty()
+
+
+        val testIntent: Intent = Intent(Intent.ACTION_SEND)
+        with(testIntent) {
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("jon@example.com")) // recipients
+            putExtra(Intent.EXTRA_SUBJECT, "Email subject")
+            putExtra(Intent.EXTRA_TEXT, "Email message text")
+            putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"))
+        }
+
+        testIntent?.run {
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("jon@example.com")) // recipients
+            putExtra(Intent.EXTRA_SUBJECT, "Email subject")
+            putExtra(Intent.EXTRA_TEXT, "Email message text")
+            putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"))
+        }
+
+        val intent = Intent().apply {
+            setClass(applicationContext, ImageActivity::class.java)
+            putExtra("index", 0)
+        }
     }
 
     /**
@@ -48,17 +102,17 @@ class KotlinActivity : AppCompatActivity() {
             println("testFor:" + i)
         }
 
-        for(i in 0 until 10){
+        for (i in 0 until 10) {
             println(i)
         }
 
         //如果想要倒序遍历，可以使用 downStep 关键字：
-        for(i in 10 downTo 0){
+        for (i in 10 downTo 0) {
             println(i)
         }
 
         //遍历的时候 步长(step) 默认是 1，可以通过 step 关键字来指定步长：
-        for( i in 10 downTo 0 step 2){
+        for (i in 10 downTo 0 step 2) {
             println(i)
         }
     }

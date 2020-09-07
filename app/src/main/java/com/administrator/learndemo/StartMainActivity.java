@@ -18,6 +18,7 @@ import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
+import com.administrator.learndemo.jetpack.JetpackActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.kotlin.KotlinActivity;
 import com.administrator.learndemo.map.MainActivity;
@@ -68,7 +69,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             DaggerTestActivity.class,
             KotlinActivity.class,
             RetrofitActivity.class,
-            ImageActivity.class
+            ImageActivity.class,
+            JetpackActivity.class
     };
 
 
@@ -127,7 +129,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "DAGGER示例",
                 "Kotlin示例",
                 "RETROFIT示例",
-                "MVVM"
+                "MVVM",
+                "JETPACK TEST"
         };
 
         @Override
