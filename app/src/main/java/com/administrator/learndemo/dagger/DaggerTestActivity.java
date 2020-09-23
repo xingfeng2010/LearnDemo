@@ -79,18 +79,18 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
 //        helloworldComplexDisposable();
 
 //        helloworldPlus();
-        
+
         testFilter();
     }
 
     /**
      * RxJava提供了大量的操作符来完成对数据的处理，这些操作符也可以理解为函数。如果把RxJava比作一条数据流水线，
      * 那么操作符就是一道工序，数据通过这些工序的加工变换，组装，最后生产出我们需要的数据。
-     *
+     * <p>
      * 记住：操作符都是对被观察发出数据的操作。
      */
     private void testFilter() {
-        Observable.just("姚明","阿联","摇头叹琦","大侄子")
+        Observable.just("姚明", "阿联", "摇头叹琦", "大侄子")
                 .filter(new Predicate<String>() {
                     @Override
                     public boolean test(String s) throws Exception {
@@ -111,7 +111,7 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
      * 接收一个ObservableEmitter对象，即被观察者的发射器，发射器能够发出数据和事件
      * 使用链式调用，让代码看起来更加整洁，
      * 上面发出数据和事件，下面接收数据和事件
-     *
+     * <p>
      * 观察者还是原来的观察者，被观察者则使用create()的方法创建出来，并实现了subscribe()方法，
      * 接收一个ObservableEmitter对象，即被观察者的发射器，发射器能够发出数据和事件。
      */
@@ -487,5 +487,26 @@ public class DaggerTestActivity extends AppCompatActivity implements ICommonView
                     public void onComplete() {
                     }
                 });
+    }
+
+    private void testRxJavaMap() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                emitter.onNext(1);
+                emitter.onNext(2);
+                emitter.onNext(3);
+            }
+        }).map(new Function<Integer, Integer>() {
+            @Override
+            public Integer apply(Integer integer) throws Exception {
+                return integer * 10;
+            }
+        }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer result) throws Exception {
+                Log.i(TAG, "accept : " + result +"\n" );
+            }
+        });
     }
 }

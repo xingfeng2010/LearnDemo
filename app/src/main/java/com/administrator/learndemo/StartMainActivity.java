@@ -30,6 +30,7 @@ import com.administrator.learndemo.mvvm.ImageActivity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
 import com.administrator.learndemo.retrofit.RetrofitActivity;
+import com.administrator.learndemo.rxjava.RxjavaActivity;
 import com.administrator.learndemo.testenum.AppShowState;
 import com.administrator.learndemo.testenum.TestAppState;
 import com.administrator.learndemo.video.VideoActivity;
@@ -70,7 +71,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             KotlinActivity.class,
             RetrofitActivity.class,
             ImageActivity.class,
-            JetpackActivity.class
+            JetpackActivity.class,
+            RxjavaActivity.class
     };
 
 
@@ -130,7 +132,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "Kotlin示例",
                 "RETROFIT示例",
                 "MVVM",
-                "JETPACK TEST"
+                "JETPACK TEST",
+                "RXJAVA学习"
         };
 
         @Override
