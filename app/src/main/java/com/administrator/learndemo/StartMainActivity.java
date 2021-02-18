@@ -15,6 +15,7 @@ import com.administrator.learndemo.activitymanager.TestActivity;
 import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
+import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
@@ -72,7 +73,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             RetrofitActivity.class,
             ImageActivity.class,
             JetpackActivity.class,
-            RxjavaActivity.class
+            RxjavaActivity.class,
+            XieChengActivity.class
     };
 
 
@@ -133,7 +135,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "RETROFIT示例",
                 "MVVM",
                 "JETPACK TEST",
-                "RXJAVA学习"
+                "RXJAVA学习",
+                "Kotlin协程"
         };
 
         @Override
