@@ -2,6 +2,7 @@ package com.administrator.learndemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,13 @@ import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -89,6 +97,13 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         mListView.setOnItemClickListener(this);
 
         mLayoutInflator = LayoutInflater.from(this);
+
+
+        Map<String, Object> content = new HashMap<>();
+        List<Map<String, Object>> list = new ArrayList<>();
+        content.put("data", list);
+        JSONObject jsonObject = new JSONObject(content);
+        Log.i("LISHIXING", "getShareToOtherKeys:" + jsonObject.toString());
     }
 
     @Override

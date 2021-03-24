@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".coroutines.XieChengActivity">
+    tools:context=".Main2Activity">
 
-    <Button
-        android:layout_width="match_parent"
+    <com.administrator.learndemo.AlignTextView
+        android:id="@+id/text_content"
+        android:layout_width="@dimen/size_240dp"
         android:layout_height="wrap_content"
-        android:text="TEST_BUTTON"
-        android:onClick="testXieChen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:fadeScrollbars="true"
+        android:lineSpacingExtra="5dp"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
