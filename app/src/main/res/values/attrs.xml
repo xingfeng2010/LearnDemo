@@ -4,13 +4,6 @@
         <attr name="circle_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="DaoCheView">
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
-        <attr name="exampleColor" format="color" />
-        <attr name="exampleDrawable" format="color|reference" />
-    </declare-styleable>
-
     <!-- 末行对齐方式 -->
     <declare-styleable name="AlignTextView">
         <attr name="align" format="enum">
@@ -18,5 +11,12 @@
             <enum name="center" value="1"/>
             <enum name="right" value="2"/>
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MyView">
+        <attr name="exampleString" format="string" />
+        <attr name="exampleDimension" format="dimension" />
+        <attr name="exampleColor" format="color" />
+        <attr name="exampleDrawable" format="color|reference" />
     </declare-styleable>
 </resources>

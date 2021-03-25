@@ -97,13 +97,6 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         mListView.setOnItemClickListener(this);
 
         mLayoutInflator = LayoutInflater.from(this);
-
-
-        Map<String, Object> content = new HashMap<>();
-        List<Map<String, Object>> list = new ArrayList<>();
-        content.put("data", list);
-        JSONObject jsonObject = new JSONObject(content);
-        Log.i("LISHIXING", "getShareToOtherKeys:" + jsonObject.toString());
     }
 
     @Override
@@ -114,6 +107,22 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         testAppState.setAppState(AppShowState.RUNNING);
 
         testDynamicPropxy();
+
+        Log.i("LISHIXING","StartMain onPostResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.i("LISHIXING","StartMain onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.i("LISHIXING","StartMain onStop");
     }
 
     @Override

@@ -48,22 +48,22 @@ public class DaoCheView extends View {
     private void init(AttributeSet attrs, int defStyle) {
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.DaoCheView, defStyle, 0);
+                attrs, R.styleable.MyView, defStyle, 0);
 
         mExampleString = a.getString(
-                R.styleable.DaoCheView_exampleString);
+                R.styleable.MyView_exampleString);
         mExampleColor = a.getColor(
-                R.styleable.DaoCheView_exampleColor,
+                R.styleable.MyView_exampleColor,
                 mExampleColor);
         // Use getDimensionPixelSize or getDimensionPixelOffset when dealing with
         // values that should fall on pixel boundaries.
         mExampleDimension = a.getDimension(
-                R.styleable.DaoCheView_exampleDimension,
+                R.styleable.MyView_exampleDimension,
                 mExampleDimension);
 
-        if (a.hasValue(R.styleable.DaoCheView_exampleDrawable)) {
+        if (a.hasValue(R.styleable.MyView_exampleDrawable)) {
             mExampleDrawable = a.getDrawable(
-                    R.styleable.DaoCheView_exampleDrawable);
+                    R.styleable.MyView_exampleDrawable);
             mExampleDrawable.setCallback(this);
         }
 

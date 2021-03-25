@@ -27,6 +27,10 @@ public class TestProviderActivity extends AppCompatActivity {
             "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS",
             "android.permission.BLUETOOTH_PRIVILEGED"};
 
+    public void clickTest(View view) {
+        Log.i("LISHIXING","clickTest");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,22 @@ public class TestProviderActivity extends AppCompatActivity {
 
 
         requestPermission();
+
+        Log.i("LISHIXING","TestProvide onCreate");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.i("LISHIXING","TestProvide onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.i("LISHIXING","TestProvide onResume");
     }
 
     private void requestPermission() {
