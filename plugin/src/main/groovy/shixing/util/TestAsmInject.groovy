@@ -25,7 +25,7 @@ public class TestAsmInject {
                 && !filePath.contains("R.class")
                 && !filePath.contains("BuildConfig.class")
                 && !filePath.contains("\$")) {
-            RedefineClass.processClass(file);
+            //RedefineClass.processClass(file);
         }
 
     }
