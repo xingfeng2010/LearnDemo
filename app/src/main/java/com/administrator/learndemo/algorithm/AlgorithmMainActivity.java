@@ -23,7 +23,9 @@ public class AlgorithmMainActivity extends AppCompatActivity implements AdapterV
             WideFirstActivity.class,
             DynaicPlanActivity.class,
             Fibonacci.class,
-            ArrayGrow.class
+            ArrayGrow.class,
+            IlandActivity.class,
+            SparseArrayActivity.class
     };
 
 
@@ -53,7 +55,9 @@ public class AlgorithmMainActivity extends AppCompatActivity implements AdapterV
                 "广度优先搜素算法",
                 "动态规划商品问题",
                 "Fibonacci动态规划",
-                "数组最大不连续递增子序列"
+                "数组最大不连续递增子序列",
+                "封闭岛问题",
+                "稀疏数组"
         };
 
         @Override
