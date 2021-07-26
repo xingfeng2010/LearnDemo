@@ -24,6 +24,7 @@ import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
 import com.administrator.learndemo.kotlin.KotlinActivity;
+import com.administrator.learndemo.liefcycle.CustomObserver;
 import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
 import com.administrator.learndemo.mediaplayer.MediaActivity;
@@ -98,6 +99,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         mListView.setOnItemClickListener(this);
 
         mLayoutInflator = LayoutInflater.from(this);
+
+        this.getLifecycle().addObserver(new CustomObserver());
     }
 
     @Override

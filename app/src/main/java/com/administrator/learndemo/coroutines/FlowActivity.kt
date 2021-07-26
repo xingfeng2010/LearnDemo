@@ -39,7 +39,31 @@ class FlowActivity : AppCompatActivity() {
 //        testFlowMap()
         //testFlowError()
 
-        testFlowUseCatch()
+       // testFlowUseCatch()
+
+        testCancelFlow()
+    }
+
+    //Flow的取消
+    //如果我们需要定时取消Flow中代码块的执行，只需要使用withTimeoutOrNull函数添加超时时间即可，
+    // 比如上述方法我们是在三秒内返回123，我们限定其在2500毫秒内执行完毕
+    private fun testCancelFlow() {
+        runBlocking {
+            withTimeoutOrNull(2500){
+                loadData1().collect {
+                    Log.i(TAG, "cancel flow value = $it")
+                }
+            }
+        }
+    }
+
+
+    fun loadData1() = flow {
+        Log.i(TAG, "进入加载数据的方法")
+        for (i in 1..3) {
+            delay(1000)
+            emit(i)
+        }
     }
 
     /**
