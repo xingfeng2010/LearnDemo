@@ -17,9 +17,7 @@ import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.coroutines.FlowActivity;
-import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
-import com.administrator.learndemo.download.ImageDownLoadActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
@@ -29,7 +27,6 @@ import com.administrator.learndemo.map.MainActivity;
 import com.administrator.learndemo.map.NewRoutePlanActivity;
 import com.administrator.learndemo.mediaplayer.MediaActivity;
 import com.administrator.learndemo.mp4.Mp4Activity;
-import com.administrator.learndemo.mvvm.DataBindActivity;
 import com.administrator.learndemo.mvvm.ImageActivity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
@@ -43,13 +40,6 @@ import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,7 +65,6 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ViewPagerActivity.class,
             ViewPagerFragmentActivity.class,
             AlgorithmMainActivity.class,
-            ImageDownLoadActivity.class,
             TestActivity.class,
             WebviewCameraActivity.class,
             DaggerTestActivity.class,
@@ -155,7 +144,6 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "ViewPager+Fragment",
                 "ViewPagerFragment",
                 "算法",
-                "图片下载",
                 "Test ASM",
                 "WebView拍照",
                 "DAGGER示例",
