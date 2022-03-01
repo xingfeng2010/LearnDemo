@@ -1,6 +1,7 @@
 package com.administrator.learndemo.liefcycle
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner

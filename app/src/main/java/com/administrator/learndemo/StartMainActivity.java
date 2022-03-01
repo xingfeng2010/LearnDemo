@@ -41,7 +41,15 @@ import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
+import java.util.concurrent.TimeUnit;
+
 import androidx.appcompat.app.AppCompatActivity;
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
@@ -102,6 +110,22 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
         testDynamicPropxy();
 
         Log.i("LISHIXING","StartMain onPostResume");
+
+        CompositeDisposable disposable = new CompositeDisposable();
+
+       Disposable posable = Observable.just("event")
+               .delay(500, TimeUnit.MILLISECONDS)
+                .map(aLong -> {
+                    Log.i("LISHIXING","StartMain onPostResume aLong:" + aLong);
+                      return 3;
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(value -> {
+                    Log.i("LISHIXING","StartMain onPostResume value:" + value);
+                });
+      //  disposable.add(posable);
+
     }
 
     @Override
