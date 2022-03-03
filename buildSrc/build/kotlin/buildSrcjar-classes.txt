@@ -1,0 +1,1 @@
+D:\workspace\LearnDemo\buildSrc\build\classes\kotlin\main\AndroidConfig$DefaultConfig.class;D:\workspace\LearnDemo\buildSrc\build\classes\kotlin\main\AndroidConfig.class;D:\workspace\LearnDemo\buildSrc\build\classes\kotlin\main\Libs.class;D:\workspace\LearnDemo\buildSrc\build\classes\kotlin\main\Versions.class
