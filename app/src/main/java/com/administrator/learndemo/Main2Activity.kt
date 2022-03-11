@@ -1,8 +1,10 @@
 package com.administrator.learndemo
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,13 @@ class Main2Activity() : AppCompatActivity(), IITest{
         setContentView(R.layout.activity_main2)
 
         sum(1,2)
+    }
+
+    fun HorizontalLayout(context: Context, init: LinearLayout.() -> Unit) : LinearLayout {
+        return LinearLayout(context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            init()
+        }
     }
 
     fun daqi(func:() -> Unit){
