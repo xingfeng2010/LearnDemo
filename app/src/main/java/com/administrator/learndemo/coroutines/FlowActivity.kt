@@ -29,17 +29,17 @@ class FlowActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_xie_cheng)
 
-        // builder()
-        // suspend()
+        builder()
+        suspend()
 
-        // testFlow()
-        //testFlowOf()
-        //testChannelFlow()
-        // testFlowSwitch()
-//        testFlowMap()
-        //testFlowError()
+        testFlow()
+        testFlowOf()
+        testChannelFlow()
+        testFlowSwitch()
+        testFlowMap()
+        testFlowError()
 
-       // testFlowUseCatch()
+        testFlowUseCatch()
 
         testCancelFlow()
     }
@@ -49,7 +49,7 @@ class FlowActivity : AppCompatActivity() {
     // 比如上述方法我们是在三秒内返回123，我们限定其在2500毫秒内执行完毕
     private fun testCancelFlow() {
         runBlocking {
-            withTimeoutOrNull(2500){
+            withTimeoutOrNull(2500) {
                 loadData1().collect {
                     Log.i(TAG, "cancel flow value = $it")
                 }
@@ -206,6 +206,7 @@ class FlowActivity : AppCompatActivity() {
                     emit(i)
                 }
             }.collect {
+                Log.i(TAG, "suspend value is:$it")
             }
         }
     }

@@ -17,6 +17,7 @@ import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.coroutines.FlowActivity;
+import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
@@ -81,6 +82,7 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             ImageActivity.class,
             JetpackActivity.class,
             RxjavaActivity.class,
+            XieChengActivity.class,
             FlowActivity.class
     };
 
@@ -176,7 +178,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "MVVM",
                 "JETPACK TEST",
                 "RXJAVA学习",
-                "Kotlin协程"
+                "Kotlin协程",
+                "Kotlin Flow"
         };
 
         @Override
