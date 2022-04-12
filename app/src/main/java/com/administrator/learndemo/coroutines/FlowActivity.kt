@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.*
  * 并且当发生异常时也可以提供一个备份数据(如果你想这么做)。当上游的数据处理完或发生异常之后，使用onCompletion()
  * 来执行一些操作(感觉有点像finally)。。所有的操作符都会默认运行在调用函数的上下文中，可以使用flowOn()来切换上游的上下文
  */
-class FlowActivity : AppCompatActivity() {
+class FlowActivity : AppCompatActivity(), CoroutineScope by MainScope(){
     companion object {
         const val TAG = "FlowTest"
     }

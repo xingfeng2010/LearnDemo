@@ -38,6 +38,7 @@
 <!--                 <category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
+        <activity android:name=".coroutines.delegate.KotlinDelegateActivity" />
         <activity android:name=".coroutines.FlowActivity" />
         <activity android:name=".coroutines.XieChengActivity" />
         <activity android:name=".rxjava.ui.compose.ComposeOperatorExampleActivity" />

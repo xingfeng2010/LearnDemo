@@ -18,6 +18,7 @@ import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.coroutines.FlowActivity;
 import com.administrator.learndemo.coroutines.XieChengActivity;
+import com.administrator.learndemo.coroutines.delegate.KotlinDelegateActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
@@ -51,6 +52,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import kotlin.jvm.internal.Intrinsics;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
@@ -83,7 +85,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             JetpackActivity.class,
             RxjavaActivity.class,
             XieChengActivity.class,
-            FlowActivity.class
+            FlowActivity.class,
+            KotlinDelegateActivity.class
     };
 
 
@@ -179,7 +182,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "JETPACK TEST",
                 "RXJAVA学习",
                 "Kotlin协程",
-                "Kotlin Flow"
+                "Kotlin Flow",
+                "Kotlin 委托"
         };
 
         @Override
