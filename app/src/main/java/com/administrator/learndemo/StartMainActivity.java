@@ -17,6 +17,7 @@ import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.coroutines.FlowActivity;
+import com.administrator.learndemo.coroutines.KotlinJobActivity;
 import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.coroutines.delegate.KotlinDelegateActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
@@ -40,6 +41,7 @@ import com.administrator.learndemo.video.VideoActivity;
 import com.administrator.learndemo.view.ViewActivity;
 import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
+import com.administrator.learndemo.webview.MultWebviewActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
@@ -86,7 +88,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             RxjavaActivity.class,
             XieChengActivity.class,
             FlowActivity.class,
-            KotlinDelegateActivity.class
+            KotlinDelegateActivity.class,
+            MultWebviewActivity.class,
+            KotlinJobActivity.class
     };
 
 
@@ -183,7 +187,9 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "RXJAVA学习",
                 "Kotlin协程",
                 "Kotlin Flow",
-                "Kotlin 委托"
+                "Kotlin 委托",
+                "多WebView展示",
+                "Kotlin Job"
         };
 
         @Override
