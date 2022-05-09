@@ -55,6 +55,8 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import kotlin.jvm.internal.Intrinsics;
+import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactRootView;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
