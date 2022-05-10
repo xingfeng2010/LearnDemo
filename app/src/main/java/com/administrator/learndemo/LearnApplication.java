@@ -25,6 +25,19 @@ public class LearnApplication extends MultiDexApplication {
     private RxBus bus;
 
 
+    public static LearnApplication getInstance() {
+        return sInstance;
+    }
+
+    private boolean isLogin =false;
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onCreate() {

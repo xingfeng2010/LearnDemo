@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.administrator.learndemo.VelocityTracker.VelocityTrackerActivity;
 import com.administrator.learndemo.activitymanager.TestActivity;
 import com.administrator.learndemo.algorithm.AlgorithmMainActivity;
+import com.administrator.learndemo.aop.AopEntryActivity;
 import com.administrator.learndemo.camera.CameraActivity;
 import com.administrator.learndemo.content.TestProviderActivity;
 import com.administrator.learndemo.coroutines.FlowActivity;
@@ -55,8 +56,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import kotlin.jvm.internal.Intrinsics;
-import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactRootView;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView mListView;
@@ -92,7 +91,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             FlowActivity.class,
             KotlinDelegateActivity.class,
             MultWebviewActivity.class,
-            KotlinJobActivity.class
+            KotlinJobActivity.class,
+            AopEntryActivity.class
     };
 
 
@@ -124,7 +124,7 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
 
         CompositeDisposable disposable = new CompositeDisposable();
 
-       Disposable posable = Observable.just("event")
+       Disposable posable = Observable.just("bevent")
                .delay(500, TimeUnit.MILLISECONDS)
                 .map(aLong -> {
                     Log.i("LISHIXING","StartMain onPostResume aLong:" + aLong);
@@ -191,7 +191,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "Kotlin Flow",
                 "Kotlin 委托",
                 "多WebView展示",
-                "Kotlin Job"
+                "Kotlin Job",
+                "AOP 示例"
         };
 
         @Override

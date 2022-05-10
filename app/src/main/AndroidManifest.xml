@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".coroutines.KotlinJobActivity"></activity>
+        <activity android:name=".aop.AopEntryActivity"></activity>
+        <activity android:name=".coroutines.KotlinJobActivity" />
         <activity android:name=".webview.MultWebviewActivity" />
         <activity android:name=".algorithm.SparseArrayActivity" />
         <activity android:name=".algorithm.IlandActivity" />
@@ -231,9 +232,8 @@ authorities：{app的包名}.provider
         -->
         <service android:name="com.amap.api.location.APSService" />
     </application>
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 指纹识别权限 -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- 指纹识别权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
