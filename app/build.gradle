@@ -206,3 +206,72 @@ class GroovyBeanExample {
 def bean = new GroovyBeanExample()
 bean.name = 'this is name'
 println bean.name
+
+def scrpitClosure = {
+    // 代表闭包定义处的类
+    println "scriptCloser this:" + this
+
+    // 代表闭包定义处的类或者对象
+    println "scriptCloser owner:" + owner
+
+    // 代表闭包定义处的类或者对象
+    println "scriptCloser delegate:" + delegate
+}
+
+
+def nestClouser = {
+    def innnerClouser = {
+        // 代表闭包定义处的类
+        println "scriptClouser this:" + this
+        // 代表闭包定义处的类或者对象
+        println "scriptClouser owner:" + owner
+        // 代表任意对象，默认与 ownner 一直
+        println "scriptClouser delegate:" + delegate
+    }
+    innnerClouser.call()
+}
+
+class Student {
+    private String name
+    private String age
+
+    def pretty = {
+        println("name is $name and age is  $age")
+    }
+}
+
+class Teacher {
+    private String name
+    private String age
+}
+
+def stu = new Student()
+stu.name = "hanmeimei"
+stu.age = "130sui"
+
+def tea = new Teacher()
+tea.name = "peter"
+tea.age = "wanwansui"
+
+stu.pretty.delegate = tea
+stu.pretty.resolveStrategy = Closure.DELEGATE_ONLY
+
+task testGroovy {
+    println stu.pretty.call()
+
+    def test = [100, "hello", true]
+    // 左移位表示向List中添加新元素
+    test << 200
+    // list 定义
+    def list = [7, 3, 20, 9, 17, 8]
+    // 排序
+    list.sort()
+    println list
+
+    list.removeAt(2)
+    println list
+
+    int result = list.find { return it % 2 == 0 }
+    println result
+}
+
