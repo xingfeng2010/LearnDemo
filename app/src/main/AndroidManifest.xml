@@ -73,7 +73,6 @@
         <activity android:name=".dagger.DaggerTestActivity" />
         <activity android:name=".webview.WebviewCameraActivity" />
         <activity android:name=".activitymanager.TestActivity" />
-        <activity android:name=".download.ImageDownLoadActivity" />
         <activity android:name=".map.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

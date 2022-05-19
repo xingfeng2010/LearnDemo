@@ -35,3 +35,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+gradle.getTaskGraph().addTaskExecutionGraphListener(new TaskExecutionGraphListener() {
+    @Override
+    void graphPopulated(TaskExecutionGraph graph) {
+         println "配置阶段结束,可以执行Task任务！！"
+    }
+})
