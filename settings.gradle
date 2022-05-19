@@ -1,3 +1,44 @@
 include ':app'
 include ':PluginSrc'
 //include ':plugin'
+
+
+/** 此外，在 settings.gradle 文件中，我们可以指定其它 project 的位置，
+这样就可以将其它外部工程中的 moudle 导入到当前的工程之中了。示例代码如下所示：*/
+/**
+  if (useSpeechMoudle) {
+    // 导入其它 App 的 speech 语音模块
+    include "speech"
+    project(":speech").projectDir = new File("../OtherApp/speech")
+  }
+ */
+
+gradle.addBuildListener(new BuildListener() {
+    @Override
+    void buildStarted(Gradle gradle) {
+        println '开始构建'
+    }
+
+    @Override
+    void settingsEvaluated(Settings settings) {
+        // var1.gradle.rootProject 这里访问 Project 对象时会报错，
+        // 因为还未完成 Project 的初始化。
+        println 'settings 评估完成（settings.gradle 中代码执行完毕）'
+    }
+
+    @Override
+    void projectsLoaded(Gradle gradle) {
+        println '项目结构加载完成（初始化阶段结束）'
+        println '初始化结束，可访问根项目：' + gradle.gradle.rootProject
+    }
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {
+        println '所有项目评估完成（配置阶段结束）'
+    }
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println '构建结束 '
+    }
+})
