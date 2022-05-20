@@ -275,3 +275,48 @@ task testGroovy {
     println result
 }
 
+project(":app") {
+    //apply plugin: 'com.android.application'
+    println "I am in new Project LISHIXING !!!"
+}
+
+class TestClourse {
+    TestClourse mytest(String path, Closure closure) {
+        println "TestClourse path is $path"
+        closure.call()
+    }
+}
+
+def testClourse = new TestClourse()
+testClourse.mytest("*#lishixing") {
+    println "I am in new TestClourse [][] HAHAHA"
+}
+
+println "getRootDir:" + this.getRootDir()
+println "getProjectDir:" + this.getProjectDir()
+println "getBuildDir:" + this.getBuildDir()
+
+
+def destFile = "./testWrite.txt"
+task writeTask {
+    inputs.property('versionCode', "32")
+    inputs.property('versionName', "1.0.0")
+    inputs.property('versionInfo', "rebuild project")
+
+    // 1.指定输出文件为destFile
+    outputs.file destFile
+    doLast {
+        // 将输入的内容写入到输出文件中去
+        def data = inputs.getProperties()
+        File file = outputs.getFiles().getSingleFile()
+    }
+}
+
+// 在配置阶段执行完之后执行 writeTask
+this.project.afterEvaluate { project ->
+    def buildTask = project.tasks.findByName("writeTask")
+    buildTask.doLast {
+        // 5.x 上使用 finalizedBy
+        writeTask.execute()
+    }
+}

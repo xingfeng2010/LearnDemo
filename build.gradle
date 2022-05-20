@@ -42,3 +42,35 @@ gradle.getTaskGraph().addTaskExecutionGraphListener(new TaskExecutionGraphListen
          println "配置阶段结束,可以执行Task任务！！"
     }
 })
+
+this.getAllProjects()
+def getAllProjects() {
+    println "<================>"
+    println " Sub Project Start "
+    println "<================>"
+    // getSubprojects 方法返回一个包含子 project 的 Set 集合
+    this.getAllprojects().eachWithIndex { Project project, int index ->
+        if (index == 0) {
+            println "root Project is $project"
+        } else {
+            println "child Project is $project"
+        }
+    }
+}
+
+this.getRootPro()
+def getRootPro() {
+    def rootProjectName = this.getRootProject().name
+    println "root project is $rootProjectName"
+}
+
+
+/**
+ * 7、subprojects 使用示例：
+ *    给所有的子工程引入 将 aar 文件上传置 Maven 服务器的配置脚本
+ */
+subprojects {
+    if (project.plugins.hasPlugin("com.android.library")) {
+        apply from: 'publishToMaven.gradle'
+    }
+}
