@@ -44,6 +44,7 @@ import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
 import com.administrator.learndemo.viewpage.tab.ViewPagerFragmentActivity;
 import com.administrator.learndemo.webview.MultWebviewActivity;
 import com.administrator.learndemo.webview.WebviewCameraActivity;
+import com.administrator.learndemo.wifi.TestNetworkActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -92,7 +93,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             KotlinDelegateActivity.class,
             MultWebviewActivity.class,
             KotlinJobActivity.class,
-            AopEntryActivity.class
+            AopEntryActivity.class,
+            TestNetworkActivity.class
     };
 
 
@@ -192,7 +194,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "Kotlin 委托",
                 "多WebView展示",
                 "Kotlin Job",
-                "AOP 示例"
+                "AOP 示例",
+                "测试网络连接"
         };
 
         @Override

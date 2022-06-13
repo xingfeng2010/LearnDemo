@@ -137,7 +137,7 @@ class MyView : View {
         val contentHeight = height - paddingTop - paddingBottom
 
         canvas.clipRect(200,200,800,800)
-        canvas.drawRect(Rect(200,200,800,800), textPaint)
+        textPaint?.let { canvas.drawRect(Rect(200,200,800,800), it) }
 //
 //        exampleString?.let {
 //            // Draw the text.
