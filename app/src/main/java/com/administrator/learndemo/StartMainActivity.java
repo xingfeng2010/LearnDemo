@@ -34,6 +34,7 @@ import com.administrator.learndemo.mp4.Mp4Activity;
 import com.administrator.learndemo.mvvm.ImageActivity;
 import com.administrator.learndemo.opengl.OpenGLActivity;
 import com.administrator.learndemo.opengl.image.ImageRenderActivity;
+import com.administrator.learndemo.render.HelloShader;
 import com.administrator.learndemo.retrofit.RetrofitActivity;
 import com.administrator.learndemo.rxjava.RxjavaActivity;
 import com.administrator.learndemo.testenum.AppShowState;
@@ -94,7 +95,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             MultWebviewActivity.class,
             KotlinJobActivity.class,
             AopEntryActivity.class,
-            TestNetworkActivity.class
+            TestNetworkActivity.class,
+            HelloShader.class
     };
 
 
@@ -195,7 +197,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "多WebView展示",
                 "Kotlin Job",
                 "AOP 示例",
-                "测试网络连接"
+                "测试网络连接",
+                "JPCT渲染示例"
         };
 
         @Override

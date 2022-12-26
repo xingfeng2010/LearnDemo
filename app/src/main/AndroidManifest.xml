@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".render.HelloShader"></activity>
         <activity android:name=".wifi.TestNetworkActivity"></activity>
         <activity android:name=".aop.AopEntryActivity" />
         <activity android:name=".coroutines.KotlinJobActivity" />
