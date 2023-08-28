@@ -38,6 +38,7 @@ public class FPSFrameCallback implements Choreographer.FrameCallback {
             }
         }
         mLastFrameTimeNanos = frameTimeNanos;
+
         //注册下一帧回调
         Choreographer.getInstance().postFrameCallback(this);
     }
