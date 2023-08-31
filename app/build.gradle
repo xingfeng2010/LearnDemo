@@ -314,6 +314,7 @@ task writeTask {
 
 // 在配置阶段执行完之后执行 writeTask
 this.project.afterEvaluate { project ->
+    println "afterEvaluate copyHooks runnn!!"
     def buildTask = project.tasks.findByName("writeTask")
     buildTask.doLast {
         // 5.x 上使用 finalizedBy

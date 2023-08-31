@@ -1,0 +1,7 @@
+task copyHooks(type: Copy) {
+    println 'copyHooks task'
+    from("../hooks") {
+        include "commit-msg"
+    }
+    into ".git/hooks"
+}
