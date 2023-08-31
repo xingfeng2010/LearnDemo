@@ -3,5 +3,5 @@ task copyHooks(type: Copy) {
     from("../hooks") {
         include "commit-msg"
     }
-    into ".git/hooks"
+    into "../.git/hooks"
 }

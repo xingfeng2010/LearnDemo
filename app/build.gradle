@@ -7,6 +7,7 @@ apply plugin: 'com.android.application'
 apply from: 'incremental.gradle'
 apply from: 'customproperty.gradle'
 apply from: 'dependency.gradle'
+apply from: 'copyhook.gradle'
 apply from: 'customtask.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -25,11 +26,11 @@ android {
 //            storeFile file('C:/Users/Administrator/.android/debug.keystore')
 //        }
 //    }
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId AndroidConfig.defaultConfig.applicationId
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -314,10 +315,7 @@ task writeTask {
 
 // 在配置阶段执行完之后执行 writeTask
 this.project.afterEvaluate { project ->
-    println "afterEvaluate copyHooks runnn!!"
-    def buildTask = project.tasks.findByName("writeTask")
-    buildTask.doLast {
-        // 5.x 上使用 finalizedBy
-        writeTask.execute()
-    }
+    def preBuildTask = project.tasks.findByName("preBuild")
+    def copyHooks = project.tasks.findByName("copyHooks")
+    preBuildTask.dependsOn(copyHooks)
 }

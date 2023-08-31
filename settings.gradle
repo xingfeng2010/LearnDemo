@@ -66,7 +66,7 @@ gradle.afterProject { project ->
 }
 
 gradle.taskGraph.whenReady {
-    println '配置阶段，总共耗时：' + (System.currentTimeMillis() - beginOfConfig) + 'ms'
+    println 'whenReady，cost total time：' + (System.currentTimeMillis() - beginOfConfig) + 'ms'
     beginOfProjectExcute = System.currentTimeMillis()
 }
 

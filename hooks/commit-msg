@@ -18,14 +18,14 @@ showFailMsg(){
 
 showPrefixNotice(){
 	echo "Allowed prefix:"
-	echo "  feat 开发新需求"
-	echo "  fix 修复bug"
-	echo "  docs 修改文档"
-	echo "  style 调整代码格式"
-	echo "  refactor 代码重构"
-    echo "  perf 性能优化"
-	echo "  test 增加单元测试号相关"
-	echo "  chore 修改配置相关"
+	echo "feat 开发新需求"
+	echo "fix 修复bug"
+	echo "docs 修改文档"
+	echo "style 调整代码格式"
+	echo "refactor 代码重构"
+  echo "perf 性能优化"
+	echo "test 增加单元测试号相关"
+	echo "chore 修改配置相关"
 }
 
 showCommitExample(){
@@ -36,6 +36,12 @@ showCommitExample(){
 }
 
 commit_msg=$(cat "${1:?Missing commit message file}")
+
+if [  ${#commit_msg} -lt 15 ]; then
+  notice "RED" "Commit Message 太短了，请再详细点!\n"
+  exit 1
+fi
+
 valid=0
 if [[ $commit_msg =~ ^(((feat)|(fix)|(docs)|(style)|(refactor)|(perf)|(test)|(chore))(\(.*\))?:){1} ]]; then
 	if [[ $commit_msg =~ ^(((feat)|(fix))(\(.*\))?:){1} ]]; then
