@@ -3,12 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.administrator.learndemo">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:name=".LearnApplication"
@@ -19,14 +36,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".render.HelloShader"></activity>
-        <activity android:name=".wifi.TestNetworkActivity"></activity>
+        <activity android:name=".dns.DNSFoundActivity" />
+        <activity android:name=".render.HelloShader" />
+        <activity android:name=".wifi.TestNetworkActivity" />
         <activity android:name=".aop.AopEntryActivity" />
         <activity android:name=".coroutines.KotlinJobActivity" />
         <activity android:name=".webview.MultWebviewActivity" />
         <activity android:name=".algorithm.SparseArrayActivity" />
         <activity android:name=".algorithm.IlandActivity" />
-        <activity android:name=".Main2Activity">
+        <activity android:name=".Main2Activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -82,7 +101,8 @@
         <activity android:name=".dagger.DaggerTestActivity" />
         <activity android:name=".webview.WebviewCameraActivity" />
         <activity android:name=".activitymanager.TestActivity" />
-        <activity android:name=".map.MainActivity">
+        <activity android:name=".map.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -90,112 +110,128 @@
             </intent-filter>
         </activity>
         <activity android:name=".map.NewRoutePlanActivity" />
-        <activity android:name=".VelocityTracker.VelocityTrackerActivity">
+        <activity android:name=".VelocityTracker.VelocityTrackerActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".mediaplayer.MediaActivity">
+        <activity android:name=".mediaplayer.MediaActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".view.ViewActivity">
+        <activity android:name=".view.ViewActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".opengl.OpenGLActivity">
+        <activity android:name=".opengl.OpenGLActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".content.TestProviderActivity">
+        <activity android:name=".content.TestProviderActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".opengl.image.ImageRenderActivity">
+        <activity android:name=".opengl.image.ImageRenderActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".camera.CameraActivity">
+        <activity android:name=".camera.CameraActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".video.VideoActivity">
+        <activity android:name=".video.VideoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".mp4.Mp4Activity">
+        <activity android:name=".mp4.Mp4Activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".share.ShareActivity">
+        <activity android:name=".share.ShareActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".qrcode.QRCodeActivity">
+        <activity android:name=".qrcode.QRCodeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".zhiwen.ZhiWenActivity">
+        <activity android:name=".zhiwen.ZhiWenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             </intent-filter>
         </activity>
-        <activity android:name=".keystore.KeyStoreActivity">
+        <activity android:name=".keystore.KeyStoreActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".DaoCheActivity">
+        <activity android:name=".DaoCheActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".ImageCompressActivity">
+        <activity android:name=".ImageCompressActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".StartMainActivity">
+        <activity android:name=".StartMainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -239,23 +275,6 @@ authorities：{app的包名}.provider
         resource：中的@xml/provider_paths是我们接下来要添加的文件
         -->
         <service android:name="com.amap.api.location.APSService" />
-    </application> <!-- 指纹识别权限 -->
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-
-    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    </application>
 
 </manifest>
