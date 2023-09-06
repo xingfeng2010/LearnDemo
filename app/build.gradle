@@ -7,7 +7,6 @@ apply plugin: 'com.android.application'
 apply from: 'incremental.gradle'
 apply from: 'customproperty.gradle'
 apply from: 'dependency.gradle'
-apply from: 'copyhook.gradle'
 apply from: 'customtask.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -311,11 +310,4 @@ task writeTask {
         def data = inputs.getProperties()
         File file = outputs.getFiles().getSingleFile()
     }
-}
-
-// 在配置阶段执行完之后执行 writeTask
-this.project.afterEvaluate { project ->
-    def preBuildTask = project.tasks.findByName("preBuild")
-    def copyHooks = project.tasks.findByName("copyHooks")
-    preBuildTask.dependsOn(copyHooks)
 }
