@@ -5,6 +5,7 @@ import android.net.nsd.NsdManager
 import android.net.nsd.NsdServiceInfo
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.administrator.learndemo.R
 
@@ -43,6 +44,7 @@ class DNSFoundActivity : AppCompatActivity() {
 
            override fun onDiscoveryStarted(p0: String?) {
                Log.i(TAG,"onDiscoveryStarted $p0")
+               Toast.makeText(getApplicationContext(), "onDiscoveryStarted $p0", Toast.LENGTH_SHORT).show()
            }
 
            override fun onDiscoveryStopped(p0: String?) {
@@ -51,6 +53,8 @@ class DNSFoundActivity : AppCompatActivity() {
 
            override fun onServiceFound(serviceInfo: NsdServiceInfo?) {
                Log.i(TAG,"onServiceFound !!!!")
+
+               Toast.makeText(getApplicationContext(), "onServiceFound", Toast.LENGTH_SHORT).show()
                resolveServiceInfo(serviceInfo)
            }
 
@@ -59,7 +63,9 @@ class DNSFoundActivity : AppCompatActivity() {
            }
        }
 
+        //nsdManager.discoverServices("_http._tcp.", NsdManager.PROTOCOL_DNS_SD, discoveryListener)
         nsdManager.discoverServices("_test._udp.", NsdManager.PROTOCOL_DNS_SD, discoveryListener)
+
     }
 
     private fun resolveServiceInfo(serviceInfo: NsdServiceInfo?) {
@@ -70,6 +76,7 @@ class DNSFoundActivity : AppCompatActivity() {
 
             override fun onServiceResolved(serviceInfo: NsdServiceInfo) {
                 Log.i(TAG,"onServiceResolved port:${serviceInfo.port}   host:${serviceInfo.host}")
+                Toast.makeText(getApplicationContext(), "port:${serviceInfo.port}   host:${serviceInfo.host}", Toast.LENGTH_SHORT).show()
             }
         }
 

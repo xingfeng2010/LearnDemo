@@ -36,6 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".dns.DNSServerActivity" />
         <activity android:name=".dns.DNSFoundActivity" />
         <activity android:name=".render.HelloShader" />
         <activity android:name=".wifi.TestNetworkActivity" />

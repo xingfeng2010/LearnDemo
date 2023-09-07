@@ -2,6 +2,7 @@ package com.administrator.learndemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.coroutines.delegate.KotlinDelegateActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.dns.DNSFoundActivity;
+import com.administrator.learndemo.dns.DNSServerActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
 import com.administrator.learndemo.keystore.KeyStoreActivity;
@@ -40,6 +42,7 @@ import com.administrator.learndemo.retrofit.RetrofitActivity;
 import com.administrator.learndemo.rxjava.RxjavaActivity;
 import com.administrator.learndemo.testenum.AppShowState;
 import com.administrator.learndemo.testenum.TestAppState;
+import com.administrator.learndemo.util.EncryUtil;
 import com.administrator.learndemo.video.VideoActivity;
 import com.administrator.learndemo.view.ViewActivity;
 import com.administrator.learndemo.viewpage.change.ViewPagerActivity;
@@ -49,6 +52,7 @@ import com.administrator.learndemo.webview.WebviewCameraActivity;
 import com.administrator.learndemo.wifi.TestNetworkActivity;
 import com.administrator.learndemo.zhiwen.ZhiWenActivity;
 
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,6 +65,12 @@ import io.reactivex.schedulers.Schedulers;
 import kotlin.jvm.internal.Intrinsics;
 
 public class StartMainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    static final String PUB_KEY="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB";
+    static final String ENCRY_CONTENT = "{\n" +
+            "  \"ip\": \"123.456.789\",\n" +
+            "  \"port\": \"456\"\n" +
+            "}";
+
     private ListView mListView;
     private LayoutInflater mLayoutInflator;
     private Class[] classes = new Class[]{
@@ -98,7 +108,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             AopEntryActivity.class,
             TestNetworkActivity.class,
             HelloShader.class,
-            DNSFoundActivity.class
+            DNSFoundActivity.class,
+            DNSServerActivity.class
     };
 
 
@@ -143,6 +154,13 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 });
       //  disposable.add(posable);
 
+        String conteng = null;
+        try {
+            conteng = EncryUtil.encrypt(ENCRY_CONTENT, PUB_KEY);
+            Log.i("LISHIXING","StartMain onPostResume conteng:" + conteng);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -201,7 +219,8 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "AOP 示例",
                 "测试网络连接",
                 "JPCT渲染示例",
-                "mDNS服务发现"
+                "mDNS服务发现",
+                "mDNS服务注册"
         };
 
         @Override
