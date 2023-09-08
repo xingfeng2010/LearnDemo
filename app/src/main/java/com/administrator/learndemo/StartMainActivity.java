@@ -24,6 +24,7 @@ import com.administrator.learndemo.coroutines.XieChengActivity;
 import com.administrator.learndemo.coroutines.delegate.KotlinDelegateActivity;
 import com.administrator.learndemo.dagger.DaggerTestActivity;
 import com.administrator.learndemo.dns.DNSFoundActivity;
+import com.administrator.learndemo.dns.DNSMainActivity;
 import com.administrator.learndemo.dns.DNSServerActivity;
 import com.administrator.learndemo.dynamic.TestDynamic;
 import com.administrator.learndemo.jetpack.JetpackActivity;
@@ -108,8 +109,7 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
             AopEntryActivity.class,
             TestNetworkActivity.class,
             HelloShader.class,
-            DNSFoundActivity.class,
-            DNSServerActivity.class
+            DNSMainActivity.class
     };
 
 
@@ -219,8 +219,7 @@ public class StartMainActivity extends AppCompatActivity implements AdapterView.
                 "AOP 示例",
                 "测试网络连接",
                 "JPCT渲染示例",
-                "mDNS服务发现",
-                "mDNS服务注册"
+                "mDNS示例"
         };
 
         @Override

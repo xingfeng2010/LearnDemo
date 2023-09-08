@@ -65,4 +65,9 @@
     <string name="switch_map">Switch Map</string>
     <string name="take_while">Take While</string>
     <string name="take_until">Take Until</string>
+
+    <string name="ok_button_text">Ok</string>
+    <string name="false_button_text">False</string>
+    <string name="identity_label">Who are you ?</string>
+    <string name="your_name">Your name</string>
 </resources>
