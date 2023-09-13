@@ -1,0 +1,66 @@
+/**
+ * gradle -PbuildApp=first buildTask
+ *
+ * gradle -PbuildApp=others buildTask
+ *
+ * gradle -PbuildApp=all buildTask
+ */
+
+
+//任务的onlyIf断言
+final String BUILD_ALL = 'all'
+final String BUILD_FIRST = 'first'
+final String BUILD_OTHERS = 'others'
+
+task taskTencentRelease{
+    doLast{
+        println "打应用宝渠道包"
+    }
+}
+
+task taskBaiduRelease{
+    doLast{
+        println "打百度手机助手渠道包"
+    }
+}
+
+task taskMiuiRelease{
+    doLast{
+        println "打小米应用商店渠道包"
+    }
+}
+
+task buildTask{
+    group BasePlugin.BUILD_GROUP
+    description "打渠道包"
+}
+
+//为buildTask添加依赖的具体任务
+buildTask.dependsOn taskTencentRelease, taskBaiduRelease, taskMiuiRelease
+
+taskTencentRelease.onlyIf{
+    if (project.hasProperty("buildApp")){
+        Object buildApp = project.property("buildApp")
+        return BUILD_ALL == buildApp || BUILD_FIRST == buildApp
+    }else{
+        return true
+    }
+}
+
+taskBaiduRelease.onlyIf{
+    if (project.hasProperty("buildApp")){
+        Object buildApp = project.property("buildApp")
+        return BUILD_ALL == buildApp || BUILD_FIRST == buildApp
+    }else{
+        return true
+    }
+}
+
+taskMiuiRelease.onlyIf{
+    if (project.hasProperty("buildApp")) {
+        Object buildApp = project.property("buildApp")
+        return BUILD_OTHERS == buildApp || BUILD_ALL == buildApp
+    } else {
+        return true
+    }
+}
